@@ -1,0 +1,169 @@
+<!-- Project: Aaranshi Education Hub - Registration Page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Register at Aaranshi Education Hub. Join our expert-led programs to unlock your learning journey and achieve excellence." />
+  <title>Register | Aaranshi Education Hub</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/animate.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- Header Top Bar -->
+  <section class="bg-primary text-white p-2 d-flex justify-content-between align-items-center px-4">
+    <div>
+      <i class="fas fa-envelope"></i> info@aaranshiedu.com &nbsp;&nbsp;|
+      <i class="fas fa-map-marker-alt"></i> 123 Learning St, Pune, India
+    </div>
+    <div>
+      <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary fs-3" href="index.html">Aaranshi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
+          <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="register.html" class="btn btn-outline-primary ms-3">Join Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero position-relative text-white text-center d-flex align-items-center justify-content-center" style="background: url('assets/home.jpg') no-repeat center/cover; height: 70vh">
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+    <div class="z-1 position-relative">
+      <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">Registration</h1>
+      <p class="lead animate__animated animate__fadeInUp">Begin your journey to excellence by enrolling today</p>
+    </div>
+  </header>
+
+  <!-- Registration Form -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 bg-white p-5 shadow rounded">
+          <h3 class="text-center text-primary mb-4">Student Registration Form</h3>
+          <form id="registerForm" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" required />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" required />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="form-control" pattern="[0-9]{10}" required />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Course Interested In</label>
+                <select class="form-select" required>
+                  <option value="">Choose a course</option>
+                  <option>JEE Preparation</option>
+                  <option>NEET Coaching</option>
+                  <option>Foundation Course (9-10)</option>
+                  <option>Olympiad Training</option>
+                </select>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label class="form-label">Address</label>
+                <textarea class="form-control" rows="3" required></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-warning px-5">Register Now</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter py-5 bg-primary text-white text-center">
+    <div class="container">
+      <h4 class="mb-3">Join Our Learning Community</h4>
+      <form class="d-flex justify-content-center">
+        <input type="email" class="form-control w-50 me-2" placeholder="Your Email Address" required />
+        <button class="btn btn-warning px-4">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-5 pb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Aaranshi Education Hub</h5>
+          <p>Shaping bright futures with quality education, innovation, and guidance.</p>
+        </div>
+        <div class="col-md-2 mb-4">
+          <h6>Quick Links</h6>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-white">Home</a></li>
+            <li><a href="about.html" class="text-white">About</a></li>
+            <li><a href="courses.html" class="text-white">Courses</a></li>
+            <li><a href="contact.html" class="text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h6>Contact</h6>
+          <p><i class="fas fa-map-marker-alt"></i> 123 Learning St, Pune, India</p>
+          <p><i class="fas fa-envelope"></i> info@aaranshiedu.com</p>
+          <p><i class="fas fa-phone"></i> +91 9876543210</p>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h6>Follow Us</h6>
+          <div>
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center bg-secondary py-2 mt-4">&copy; 2025 Aaranshi Education Hub. All rights reserved.</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script>new WOW().init();</script>
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      if (!this.checkValidity()) {
+        e.preventDefault();
+        e.stopPropagation();
+        alert("Please complete the form before submitting.");
+      }
+      this.classList.add("was-validated");
+    });
+  </script>
+</body>
+
+</html>

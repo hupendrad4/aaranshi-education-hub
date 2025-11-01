@@ -1,0 +1,247 @@
+<!-- Top Bar -->
+<div class="topbar p-2 d-flex justify-content-between align-items-center px-4">
+  <div class="d-flex align-items-center gap-3 flex-wrap">
+    <span class="kicker d-none d-md-inline-flex"><i class="fa-solid fa-star"></i> Trusted by top scorers</span>
+    <span><i class="fas fa-phone-alt me-2"></i> <a href="tel:+919876543210" class="text-decoration-none">+91 98765 43210</a></span>
+    <span><i class="fas fa-envelope me-2"></i> <a href="mailto:info@aranshieduhub.com" class="text-decoration-none">info@aranshieduhub.com</a></span>
+  </div>
+  <div class="social-links">
+    <a href="#" class="me-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="me-3" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+</div>
+
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-3" href="index.html">
+      <span style="color: var(--color-primary);">Aranshi</span>
+      <span style="color: var(--color-accent);">Education Hub</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            About Us
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
+            <li><a class="dropdown-item" href="#">Our Mission</a></li>
+            <li><a class="dropdown-item" href="#">Our Team</a></li>
+            <li><a class="dropdown-item" href="#">Why Choose Us</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="courses.html" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Courses
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+            <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
+            <li><a class="dropdown-item" href="#">Science Stream</a></li>
+            <li><a class="dropdown-item" href="#">Commerce Stream</a></li>
+            <li><a class="dropdown-item" href="#">Competitive Exams</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="teachers.html">Teachers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="events.html">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="testimonials.html">Testimonials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
+        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+          <a href="register.html" class="btn btn-primary">Register Now</a>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+  <style>
+    :root {
+      --edu-bg: #A8E9F0;
+      --edu-navy: #004B63;
+      --edu-green: #22B573;
+      --edu-muted: #5c7d88;
+      --shadow-soft: 0 10px 25px rgba(0,0,0,.07);
+      --transition: all 0.3s ease;
+    }
+  
+    /* Top Bar */
+    .topbar {
+      background: var(--edu-bg);
+      color: var(--edu-navy);
+      font-weight: 500;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      font-family: 'Poppins', sans-serif;
+    }
+  
+    .topbar a {
+      color: var(--edu-navy);
+      opacity: .9;
+      transition: var(--transition);
+    }
+  
+    .topbar a:hover { opacity: 1; }
+  
+    .social-links a {
+      color: var(--edu-navy);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+  
+    .social-links a:hover {
+      color: var(--edu-green);
+    }
+  
+    .kicker {
+      background: rgba(168,233,240,.25);
+      border: 1px solid rgba(0,0,0,.08);
+      color: #0b4b5e;
+      display: inline-flex;
+      gap: .5rem;
+      align-items: center;
+      padding: .35rem .75rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+  
+    /* Navbar */
+    .navbar {
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+      font-family: 'Poppins', sans-serif;
+    }
+  
+    .navbar-brand span {
+      font-weight: 700;
+    }
+  
+    .nav-link {
+      color: var(--edu-navy);
+      font-weight: 500;
+      position: relative;
+      transition: var(--transition);
+    }
+  
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--edu-green) !important;
+    }
+  
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 50%;
+      background-color: var(--edu-green);
+      transform: translateX(-50%);
+      transition: var(--transition);
+    }
+  
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 70%;
+    }
+  
+    /* Dropdown Menu */
+    .dropdown-menu {
+      border: none;
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+      padding: 0.5rem 0;
+    }
+  
+    .dropdown-item {
+      padding: 0.6rem 1.5rem;
+      color: var(--edu-navy);
+      transition: var(--transition);
+    }
+  
+    .dropdown-item:hover {
+      background-color: var(--edu-bg);
+      color: var(--edu-navy);
+    }
+  
+    /* Register Button */
+    .btn-join {
+      border: 2px solid var(--edu-green);
+      color: var(--edu-green);
+      font-weight: 600;
+      border-radius: 999px;
+      padding: .5rem 1.2rem;
+      transition: var(--transition);
+    }
+  
+    .btn-join:hover {
+      background: var(--edu-green);
+      color: #fff;
+    }
+  
+    /* Responsive */
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        background: #fff;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: var(--shadow-soft);
+        margin-top: 0.75rem;
+      }
+  
+      .nav-item {
+        margin: 0.4rem 0;
+      }
+  
+      .nav-link {
+        padding: 0.75rem 1rem !important;
+      }
+  
+      .dropdown-menu {
+        margin-left: 1rem;
+        width: calc(100% - 2rem);
+      }
+    }
+  </style>
+  
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="btn back-to-top rounded-circle shadow" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  
+  <script>
+    // Back to Top
+    const backBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backBtn.style.display = "flex";
+      } else {
+        backBtn.style.display = "none";
+      }
+    });
+  
+    backBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+  

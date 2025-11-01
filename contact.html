@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Aranshi Education Hub</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- jQuery (for header/footer includes) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Page Styles (same theme as testimonials) -->
+  <style>
+    :root{
+      --edu-bg: #A8E9F0;      /* light cyan-blue */
+      --edu-navy: #004B63;    /* headline/navy */
+      --edu-green: #22B573;   /* accent */
+      --edu-ink: #0a2f3d;     /* body text */
+      --edu-white: #ffffff;
+      --edu-muted: #5c7d88;   /* subtle text */
+      --shadow-soft: 0 10px 25px rgba(0,0,0,.07);
+      --transition: all .25s ease;
+    }
+
+    html,body{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--edu-ink);
+      background: #f7fbfc;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+    }
+
+    /* Loader (robust) */
+    .loading{
+      position: fixed; inset: 0;
+      background: rgba(255,255,255,.9);
+      display: none;         /* hidden by default */
+      place-items: center;
+      z-index: 2000;
+    }
+    .loading.show{ display: grid; }
+    .spinner{
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 4px solid var(--edu-bg);
+      border-top-color: var(--edu-navy);
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg) } }
+
+    /* Back to top */
+    .back-to-top{
+      position: fixed; right: 18px; bottom: 18px;
+      width: 44px; height: 44px; border-radius: 50%;
+      display:flex; align-items:center; justify-content:center;
+      background: var(--edu-green); color:#fff; border: 0;
+      box-shadow: 0 12px 22px rgba(34,181,115,.35);
+      z-index: 1050; opacity:0; visibility:hidden; transform: translateY(10px);
+      transition: var(--transition);
+    }
+    .back-to-top.show{ opacity:1; visibility:visible; transform: translateY(0); }
+
+    /* Hero (matches testimonials) */
+    .hero{
+      min-height: 58vh;
+      position: relative;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; overflow: hidden;
+      background: url('assets/contact-hero.jpg') center/cover no-repeat;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,75,99,.65), rgba(0,75,99,.35)),
+        radial-gradient(80rem 40rem at 60% -10%, rgba(168,233,240,.45), transparent 60%);
+      mix-blend-mode: multiply;
+    }
+    .kicker{
+      background: rgba(168,233,240,.25);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #e9fbff;
+      display:inline-flex; gap:.5rem; align-items:center;
+      padding:.35rem .75rem; border-radius:999px; font-weight:600;
+    }
+    .section-title{
+      color: var(--edu-navy);
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    /* Contact info cards */
+    .info-card{
+      border: 0; border-radius: 1.25rem; background:#fff;
+      box-shadow: var(--shadow-soft); height:100%;
+      padding: 1.5rem;
+      transition: transform .25s ease, box-shadow .25s ease;
+      position: relative; overflow: hidden;
+    }
+    .info-card::after{
+      content:""; position:absolute; top:0; left:0; right:0; height:5px;
+      background: linear-gradient(90deg, var(--edu-green), #72f1b7);
+    }
+    .info-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 30px rgba(0,0,0,.09); }
+    .info-icon{
+      width:54px; height:54px; display:inline-flex; align-items:center; justify-content:center;
+      border-radius: 14px; background: var(--edu-bg); color: var(--edu-navy);
+      box-shadow: 0 8px 16px rgba(168,233,240,.5); font-size: 1.25rem;
+    }
+
+    /* Contact form */
+    .contact-card{
+      border: 0; border-radius: 1.25rem; background:#fff; box-shadow: var(--shadow-soft);
+      padding: 2rem;
+    }
+    .form-control, .form-select{
+      border-radius: 14px; border: 2px solid rgba(0,75,99,.15);
+      padding: .9rem 1rem; background:#fff;
+    }
+    .form-control:focus, .form-select:focus{
+      border-color: var(--edu-bg); box-shadow: 0 0 0 .25rem rgba(168,233,240,.35);
+    }
+    .btn-primary-edu{
+      background: var(--edu-green); color:#fff; border:0; font-weight:700;
+      border-radius: 999px; padding: .9rem 1.35rem;
+      transition: var(--transition);
+    }
+    .btn-primary-edu:hover{ filter: brightness(.95); }
+
+    /* Map embed wrapper */
+    .map-wrap{
+      border-radius: 1.25rem; overflow:hidden; box-shadow: var(--shadow-soft); background:#fff;
+    }
+
+    /* FAQ */
+    .accordion-button{
+      font-weight:600; color: var(--edu-navy);
+    }
+    .accordion-button:focus{
+      box-shadow: none;
+    }
+    .accordion-item{
+      border: 0; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-soft);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading show" id="loading">
+    <div class="spinner" aria-label="Loading"></div>
+  </div>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Header include (uses your updated themed header component) -->
+  <div id="header"></div>
+
+  <!-- Main -->
+  <main>
+    <!-- Hero -->
+    <header class="hero text-center">
+      <div class="position-relative z-1 container">
+        <div class="mb-3">
+          <span class="kicker"><i class="fa-regular fa-message-dots me-1"></i> Get in Touch</span>
+        </div>
+        <h1 class="display-5 fw-bold animate__animated animate__fadeInDown">Contact Us</h1>
+        <p class="lead animate__animated animate__fadeInUp">We’re here to help with admissions, courses & counseling</p>
+      </div>
+    </header>
+
+    <!-- Contact Info -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="text-center section-title mb-4 animate__animated animate__fadeInUp">Reach Us Quickly</h2>
+        <p class="text-center text-muted mb-5 animate__animated animate__fadeInUp animate__delay-1s">
+          Choose the best way to connect—call, visit, or drop us a message.
+        </p>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="info-card h-100">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <span class="info-icon"><i class="fa-solid fa-phone"></i></span>
+                <h5 class="mb-0">Phone</h5>
+              </div>
+              <p class="text-muted mb-1">Mon–Sat, 9:00 AM – 7:00 PM</p>
+              <a href="tel:+919876543210" class="fw-semibold text-decoration-none">+91 98765 43210</a>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="info-card h-100">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <span class="info-icon"><i class="fa-solid fa-envelope-open-text"></i></span>
+                <h5 class="mb-0">Email</h5>
+              </div>
+              <p class="text-muted mb-1">We typically reply within 24 hours</p>
+              <a href="mailto:info@aranshieduhub.com" class="fw-semibold text-decoration-none">info@aranshieduhub.com</a>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="info-card h-100">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <span class="info-icon"><i class="fa-solid fa-location-dot"></i></span>
+                <h5 class="mb-0">Address</h5>
+              </div>
+              <p class="text-muted mb-1">123 Learning St, Pune, India</p>
+              <a href="#map" class="fw-semibold text-decoration-none">View on map</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form + Map -->
+    <section class="pb-5">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Form -->
+          <div class="col-lg-7">
+            <div class="contact-card">
+              <h3 class="mb-3 text-primary" style="color: var(--edu-navy)!important;">Send us a message</h3>
+              <p class="text-muted mb-4">Fill the form and our academic counselor will get back to you shortly.</p>
+              <form>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="you@example.com" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-control" placeholder="+91 9XXXXXXXXX" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Interested In</label>
+                    <select class="form-select" required>
+                      <option value="" selected disabled>Select a course</option>
+                      <option>Science Stream</option>
+                      <option>Commerce Stream</option>
+                      <option>Competitive Exams</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" rows="5" placeholder="Write your message..."></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary-edu">
+                      <i class="fa-regular fa-paper-plane me-2"></i>Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Map / Campus -->
+          <div class="col-lg-5">
+            <div class="map-wrap" id="map">
+              <!-- Replace the src with your actual map or campus iframe -->
+              <iframe
+                title="Aaranshi Campus Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.793933974706!2d73.856!3d18.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPune!5e0!3m2!1sen!2sin!4v1610000000000"
+                width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <!-- Small note -->
+            <div class="small text-muted mt-2">*Map is illustrative. Use your exact campus location.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-4">Frequently Asked Questions</h2>
+        <p class="text-center text-muted mb-4">Quick answers about admissions, fees, and batches.</p>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="q1">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="true">
+                    What documents are required for admission?
+                  </button>
+                </h2>
+                <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    A government ID, last academic mark sheet, and 2 passport photos. Program-specific requirements may apply.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="q2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+                    Do you offer demo classes?
+                  </button>
+                </h2>
+                <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, we run frequent demo sessions. Submit the form above and request a demo in the message.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="q3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
+                    Are there scholarships available?
+                  </button>
+                </h2>
+                <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Merit-based scholarships are available for top performers. Please contact our counselors for details.
+                  </div>
+                </div>
+              </div>
+            </div> <!-- /accordion -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA (optional but consistent) -->
+    <section class="py-5 text-center" style="background: linear-gradient(135deg, var(--edu-bg), #d3f6fa); color: var(--edu-navy);">
+      <div class="container">
+        <h4 class="fw-bold mb-3">Stay Updated</h4>
+        <form class="d-flex flex-column flex-sm-row justify-content-center align-items-stretch gap-2 mx-auto" style="max-width:760px">
+          <input type="email" class="form-control" placeholder="Your Email Address" required aria-label="Email address"/>
+          <button class="btn btn-primary-edu" type="submit"><i class="fa-regular fa-paper-plane me-2"></i>Subscribe</button>
+        </form>
+        <small class="d-block mt-2 text-muted">We respect your privacy. Unsubscribe anytime.</small>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer include -->
+  <div id="footer"></div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- WOW.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+  <!-- Page Scripts -->
+  <script>
+    // Initialize WOW animations
+    if (typeof WOW === 'function') { new WOW().init(); }
+
+    // Robust loader hide
+    (function(){
+      const hideLoader = () => {
+        const el = document.getElementById('loading');
+        if (el) el.classList.remove('show');
+      };
+      document.addEventListener('DOMContentLoaded', hideLoader);
+      window.addEventListener('load', hideLoader);
+      setTimeout(hideLoader, 3000); // failsafe in case of stalled assets
+    })();
+
+    // Back to top
+    (function(){
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+      });
+      backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    // Load header & footer (works even if 404; loader already hidden)
+    $(function(){
+      $("#header").load("components/header.html", function() {
+        // mark active nav item
+        const current = "contact.html";
+        $('.nav-link').each(function(){
+          const linkPage = ($(this).attr('href')||'').split('/').pop();
+          if (linkPage === current) $(this).addClass('active');
+        });
+      });
+      $("#footer").load("components/footer.html", function(){
+        const year = new Date().getFullYear();
+        $('.current-year').text(year);
+      });
+    });
+  </script>
+</body>
+</html>

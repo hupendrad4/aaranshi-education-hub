@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Aranshi Education Hub</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- jQuery (for header/footer includes) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Page styles -->
+  <style>
+    :root{
+      --edu-bg: #A8E9F0;      /* light cyan-blue */
+      --edu-navy: #004B63;    /* headline/navy */
+      --edu-green: #22B573;   /* accent */
+      --edu-ink: #0a2f3d;     /* body text */
+      --edu-white: #ffffff;
+      --edu-muted: #5c7d88;   /* subtle text */
+      --shadow-soft: 0 10px 25px rgba(0,0,0,.07);
+      --transition: all .25s ease;
+    }
+
+    html,body{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--edu-ink);
+      background: #f7fbfc;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+    }
+
+    /* Loader (robust) */
+    .loading{
+      position: fixed; inset: 0; background: rgba(255,255,255,.9);
+      display: none; place-items: center; z-index: 2000;
+    }
+    .loading.show{ display: grid; }
+    .spinner{
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 4px solid var(--edu-bg);
+      border-top-color: var(--edu-navy);
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg) } }
+
+    /* Back to top */
+    .back-to-top{
+      position: fixed; right: 18px; bottom: 18px; width: 44px; height:44px; border-radius: 50%;
+      display:flex; align-items:center; justify-content:center; background: var(--edu-green); color:#fff; border:0;
+      box-shadow: 0 12px 22px rgba(34,181,115,.35); z-index:1050; opacity:0; visibility:hidden; transform: translateY(10px);
+      transition: var(--transition);
+    }
+    .back-to-top.show{ opacity:1; visibility:visible; transform: translateY(0); }
+
+    /* Hero */
+    .hero{
+      min-height: 58vh; position: relative; display:flex; align-items:center; justify-content:center; color:#fff; overflow: hidden;
+      background: url('assets/about-hero.jpg') center/cover no-repeat;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,75,99,.65), rgba(0,75,99,.35)),
+        radial-gradient(80rem 40rem at 60% -10%, rgba(168,233,240,.45), transparent 60%);
+      mix-blend-mode: multiply;
+    }
+    .kicker{
+      background: rgba(168,233,240,.25); border: 1px solid rgba(255,255,255,.25); color:#e9fbff;
+      display:inline-flex; gap:.5rem; align-items:center; padding:.35rem .75rem; border-radius:999px; font-weight:600;
+    }
+    .section-title{
+      color: var(--edu-navy); font-weight: 800; letter-spacing: .3px;
+    }
+
+    /* Story / Mission / Vision */
+    .about-card{
+      border:0; border-radius: 1.25rem; background:#fff; box-shadow: var(--shadow-soft); padding:1.75rem; height:100%;
+      transition: transform .25s ease, box-shadow .25s ease; position:relative; overflow:hidden;
+    }
+    .about-card::after{
+      content:""; position:absolute; top:0; left:0; right:0; height:5px;
+      background: linear-gradient(90deg, var(--edu-green), #72f1b7);
+    }
+    .about-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 30px rgba(0,0,0,.09); }
+
+    .icon-tile{
+      width:56px; height:56px; display:inline-flex; align-items:center; justify-content:center;
+      border-radius:14px; background: var(--edu-bg); color: var(--edu-navy); font-size:1.25rem;
+      box-shadow: 0 8px 16px rgba(168,233,240,.5);
+    }
+
+    /* Stats */
+    .stat{
+      background:#fff; border-radius: 1rem; box-shadow: var(--shadow-soft); padding:1.2rem;
+    }
+    .stat h3{ color: var(--edu-navy); font-weight:800; }
+
+    /* Timeline */
+    .timeline{
+      position: relative; padding-left: 28px;
+    }
+    .timeline::before{
+      content:""; position:absolute; left:10px; top:0; bottom:0; width:4px; background: var(--edu-bg); border-radius:2px;
+    }
+    .t-item{ position: relative; margin-bottom:1.25rem; }
+    .t-item::before{
+      content:""; position:absolute; left:-2px; top:.35rem; width:16px; height:16px; border-radius:50%; background: var(--edu-green); box-shadow: 0 0 0 4px #dff8ee;
+    }
+
+    /* Values */
+    .value-card{
+      border:0; border-radius: 1.25rem; background:#fff; box-shadow: var(--shadow-soft); padding:1.5rem; height:100%;
+    }
+    .value-card h6{ color: var(--edu-navy); font-weight:700; }
+
+    /* Team */
+    .team-card{
+      border:0; border-radius: 1.25rem; background:#fff; box-shadow: var(--shadow-soft); overflow: hidden; height:100%;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .team-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 30px rgba(0,0,0,.09); }
+    .team-photo{ aspect-ratio: 4/3; object-fit: cover; width:100%; background:#eaf9fb; }
+    .team-body{ padding: 1rem 1.25rem 1.25rem; }
+    .team-name{ color: var(--edu-navy); font-weight:700; }
+
+    /* CTA */
+    .btn-cta{
+      background: var(--edu-green); color:#fff; border:0; font-weight:700;
+      border-radius: 999px; padding:.8rem 1.35rem; transition: var(--transition);
+    }
+    .btn-cta:hover{ filter: brightness(.95); }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading show" id="loading">
+    <div class="spinner" aria-label="Loading"></div>
+  </div>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Header include -->
+  <div id="header"></div>
+
+  <!-- Main -->
+  <main>
+    <!-- Hero -->
+    <header class="hero text-center">
+      <div class="position-relative z-1 container">
+        <div class="mb-3">
+          <span class="kicker"><i class="fa-solid fa-seedling me-1"></i> Since 2015</span>
+        </div>
+        <h1 class="display-5 fw-bold animate__animated animate__fadeInDown">About Aranshi Education Hub</h1>
+        <p class="lead animate__animated animate__fadeInUp">Empowering students with structured learning and caring mentorship</p>
+      </div>
+    </header>
+
+    <!-- Our Story / Mission / Vision -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="about-card h-100">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <span class="icon-tile"><i class="fa-solid fa-book-open"></i></span>
+                <h3 class="mb-0" style="color: var(--edu-navy);">Our Story</h3>
+              </div>
+              <p class="text-muted mb-2">Founded in Pune, Aranshi Education Hub began as a small classroom coaching initiative. Today, we serve students across Science, Commerce, and Competitive streams with a results-driven approach.</p>
+              <p class="text-muted mb-0">Our philosophy combines rigorous academics with empathetic mentorship, ensuring every learner finds their pace, confidence, and success.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="about-card h-100">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <span class="icon-tile"><i class="fa-solid fa-bullseye"></i></span>
+                <h4 class="mb-0" style="color: var(--edu-navy);">Mission</h4>
+              </div>
+              <p class="text-muted mb-0">Deliver high-quality, accessible education that builds strong fundamentals, exam confidence, and life skills.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="about-card h-100">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <span class="icon-tile"><i class="fa-solid fa-eye"></i></span>
+                <h4 class="mb-0" style="color: var(--edu-navy);">Vision</h4>
+              </div>
+              <p class="text-muted mb-0">Become India’s most trusted learning partner for school and competitive education, powered by data-backed pedagogy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <section class="py-4" style="background: linear-gradient(135deg, var(--edu-bg), #d3f6fa);">
+      <div class="container">
+        <div class="row g-3 text-center">
+          <div class="col-6 col-md-3">
+            <div class="stat">
+              <h3>10k+</h3>
+              <div class="text-muted">Students Taught</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat">
+              <h3>96%</h3>
+              <div class="text-muted">Board Results</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat">
+              <h3>2k+</h3>
+              <div class="text-muted">NEET/JEE Selections</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat">
+              <h3>150+</h3>
+              <div class="text-muted">Expert Faculty</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-4">Milestones</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="timeline">
+              <div class="t-item">
+                <h6 class="mb-1" style="color: var(--edu-navy);">2015 — The Beginning</h6>
+                <p class="text-muted mb-0">Started with weekend batches for Class 10–12 in Pune.</p>
+              </div>
+              <div class="t-item">
+                <h6 class="mb-1" style="color: var(--edu-navy);">2018 — Competitive Edge</h6>
+                <p class="text-muted mb-0">Launched NEET and JEE programs with structured test series.</p>
+              </div>
+              <div class="t-item">
+                <h6 class="mb-1" style="color: var(--edu-navy);">2021 — Digital Leap</h6>
+                <p class="text-muted mb-0">Adopted hybrid learning with live classes and LMS.</p>
+              </div>
+              <div class="t-item">
+                <h6 class="mb-1" style="color: var(--edu-navy);">2024 — Scaling Mentorship</h6>
+                <p class="text-muted mb-0">Introduced 1:1 mentorship and analytics-driven progress tracking.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-4">Our Core Values</h2>
+        <p class="text-center text-muted mb-5">Principles that guide everything we do.</p>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="value-card h-100 text-center">
+              <div class="icon-tile mb-2"><i class="fa-solid fa-heart"></i></div>
+              <h6>Student First</h6>
+              <p class="text-muted mb-0">Empathy and care in every interaction.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="value-card h-100 text-center">
+              <div class="icon-tile mb-2"><i class="fa-solid fa-cubes"></i></div>
+              <h6>Strong Fundamentals</h6>
+              <p class="text-muted mb-0">Concept clarity over rote learning.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="value-card h-100 text-center">
+              <div class="icon-tile mb-2"><i class="fa-solid fa-chart-line"></i></div>
+              <h6>Continuous Improvement</h6>
+              <p class="text-muted mb-0">Feedback loops and analytics-driven growth.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="value-card h-100 text-center">
+              <div class="icon-tile mb-2"><i class="fa-solid fa-people-group"></i></div>
+              <h6>Community</h6>
+              <p class="text-muted mb-0">A supportive environment for all learners.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-4">Meet Our Team</h2>
+        <p class="text-center text-muted mb-5">Experienced mentors who care about the journey as much as the result.</p>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <article class="team-card">
+              <img class="team-photo" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt="Team member 1" loading="lazy">
+              <div class="team-body">
+                <div class="team-name">Rohit Sharma</div>
+                <div class="text-muted small mb-2">Head of Science</div>
+                <div class="d-flex gap-2">
+                  <a href="#" class="text-muted"><i class="fa-brands fa-linkedin"></i></a>
+                  <a href="#" class="text-muted"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <article class="team-card">
+              <img class="team-photo" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="Team member 2" loading="lazy">
+              <div class="team-body">
+                <div class="team-name">Anita Verma</div>
+                <div class="text-muted small mb-2">Biology Mentor</div>
+                <div class="d-flex gap-2">
+                  <a href="#" class="text-muted"><i class="fa-brands fa-linkedin"></i></a>
+                  <a href="#" class="text-muted"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <article class="team-card">
+              <img class="team-photo" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200&auto=format&fit=crop" alt="Team member 3" loading="lazy">
+              <div class="team-body">
+                <div class="team-name">Aditya Mehta</div>
+                <div class="text-muted small mb-2">Mathematics Mentor</div>
+                <div class="d-flex gap-2">
+                  <a href="#" class="text-muted"><i class="fa-brands fa-linkedin"></i></a>
+                  <a href="#" class="text-muted"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <article class="team-card">
+              <img class="team-photo" src="https://images.unsplash.com/photo-1558222218-b7b54eede3f3?q=80&w=1200&auto=format&fit=crop" alt="Team member 4" loading="lazy">
+              <div class="team-body">
+                <div class="team-name">Priya Kulkarni</div>
+                <div class="text-muted small mb-2">Academic Counselor</div>
+                <div class="d-flex gap-2">
+                  <a href="#" class="text-muted"><i class="fa-brands fa-linkedin"></i></a>
+                  <a href="#" class="text-muted"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5 text-center" style="background: linear-gradient(135deg, var(--edu-bg), #d3f6fa); color: var(--edu-navy);">
+      <div class="container">
+        <h4 class="fw-bold mb-2">Want to join our team or collaborate?</h4>
+        <p class="text-muted mb-3">We’re always looking for passionate educators and partners.</p>
+        <a href="contact.html" class="btn btn-cta"><i class="fa-regular fa-paper-plane me-2"></i>Contact Us</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer include -->
+  <div id="footer"></div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- WOW.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+  <!-- Page Scripts -->
+  <script>
+    // Initialize WOW animations
+    if (typeof WOW === 'function') { new WOW().init(); }
+
+    // Robust loader hide
+    (function(){
+      const hideLoader = () => {
+        const el = document.getElementById('loading');
+        if (el) el.classList.remove('show');
+      };
+      document.addEventListener('DOMContentLoaded', hideLoader);
+      window.addEventListener('load', hideLoader);
+      setTimeout(hideLoader, 3000); // failsafe
+    })();
+
+    // Back to top
+    (function(){
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+      });
+      backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    // Load header & footer and mark active
+    $(function(){
+      $("#header").load("components/header.html", function() {
+        const current = "about.html";
+        $('.nav-link').each(function(){
+          const linkPage = ($(this).attr('href')||'').split('/').pop();
+          if (linkPage === current) $(this).addClass('active');
+        });
+      });
+      $("#footer").load("components/footer.html", function(){
+        const year = new Date().getFullYear();
+        $('.current-year').text(year);
+      });
+    });
+  </script>
+</body>
+</html>

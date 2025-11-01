@@ -1,0 +1,455 @@
+<!-- Project: Aaranshi Education Hub - Courses Page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore our wide range of academic and professional courses at Aaranshi Education Hub. Enroll now to shape your future." />
+  <title>Courses | Aaranshi Education Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/animate.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Top Bar -->
+  <section class="bg-primary text-white py-2">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <i class="fas fa-envelope me-2"></i> info@aaranshiedu.com
+          <span class="mx-2">|</span>
+          <i class="fas fa-map-marker-alt me-2"></i> 123 Learning St, Pune, India
+        </div>
+        <div class="social-links">
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Aaranshi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
+          <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="register.html" class="btn btn-outline-primary ms-3">Join Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="hero" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('assets/courses.jpg') no-repeat center/cover; height: 70vh;">
+    <div class="content">
+      <h1 class="animate__animated animate__fadeInDown">Explore Our Courses</h1>
+      <p class="animate__animated animate__fadeInUp">Designed to spark curiosity, build skills, and achieve academic excellence</p>
+    </div>
+  </header>
+
+  <!-- Course Filter Section -->
+  <section class="py-4 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="d-flex justify-content-center flex-wrap gap-2">
+            <button class="btn btn-outline-primary active" data-filter="all">All Courses</button>
+            <button class="btn btn-outline-primary" data-filter="academic">Academic</button>
+            <button class="btn btn-outline-primary" data-filter="competitive">Competitive</button>
+            <button class="btn btn-outline-primary" data-filter="skill">Skill Development</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">Our Popular Courses</h2>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-category="academic">
+          <div class="card animate-on-scroll">
+            <img src="assets/courses.jpg" class="card-img-top" alt="Mathematics Course">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="badge bg-primary">Academic</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <small class="text-muted ms-1">(4.9)</small>
+                </div>
+              </div>
+              <h5 class="card-title text-primary">Mathematics Mastery</h5>
+              <p class="card-text">Comprehensive math coaching from foundational concepts to advanced problem-solving techniques for all boards.</p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <i class="fas fa-clock text-warning me-1"></i>
+                  <small>12 Weeks</small>
+                </div>
+                <div>
+                  <i class="fas fa-users text-warning me-1"></i>
+                  <small>Max 15 students</small>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="price">
+                  <span class="h5 text-primary">₹15,000</span>
+                  <small class="text-muted text-decoration-line-through">₹20,000</small>
+                </div>
+                <span class="badge bg-success">25% OFF</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="register.html" class="btn btn-warning w-100">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-category="academic">
+          <div class="card animate-on-scroll">
+            <img src="assets/courses.jpg" class="card-img-top" alt="Science Course">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="badge bg-success">Academic</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <small class="text-muted ms-1">(4.8)</small>
+                </div>
+              </div>
+              <h5 class="card-title text-primary">Science Simplified</h5>
+              <p class="card-text">Interactive science sessions with experiments, practical learning, and concept clarity for Physics, Chemistry, Biology.</p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <i class="fas fa-clock text-warning me-1"></i>
+                  <small>16 Weeks</small>
+                </div>
+                <div>
+                  <i class="fas fa-users text-warning me-1"></i>
+                  <small>Max 12 students</small>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="price">
+                  <span class="h5 text-primary">₹18,000</span>
+                  <small class="text-muted text-decoration-line-through">₹24,000</small>
+                </div>
+                <span class="badge bg-success">25% OFF</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="register.html" class="btn btn-warning w-100">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-category="academic">
+          <div class="card animate-on-scroll">
+            <img src="assets/courses.jpg" class="card-img-top" alt="English Course">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="badge bg-info">Academic</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <small class="text-muted ms-1">(4.7)</small>
+                </div>
+              </div>
+              <h5 class="card-title text-primary">English Excellence</h5>
+              <p class="card-text">Master grammar, vocabulary, communication skills, and literature with expert guidance and practice sessions.</p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <i class="fas fa-clock text-warning me-1"></i>
+                  <small>10 Weeks</small>
+                </div>
+                <div>
+                  <i class="fas fa-users text-warning me-1"></i>
+                  <small>Max 20 students</small>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="price">
+                  <span class="h5 text-primary">₹12,000</span>
+                  <small class="text-muted text-decoration-line-through">₹16,000</small>
+                </div>
+                <span class="badge bg-success">25% OFF</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="register.html" class="btn btn-warning w-100">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-category="competitive">
+          <div class="card animate-on-scroll">
+            <img src="assets/courses.jpg" class="card-img-top" alt="JEE Preparation">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="badge bg-danger">Competitive</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <small class="text-muted ms-1">(4.9)</small>
+                </div>
+              </div>
+              <h5 class="card-title text-primary">JEE Preparation</h5>
+              <p class="card-text">Comprehensive JEE Main & Advanced preparation with expert faculty, mock tests, and personalized guidance.</p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <i class="fas fa-clock text-warning me-1"></i>
+                  <small>24 Weeks</small>
+                </div>
+                <div>
+                  <i class="fas fa-users text-warning me-1"></i>
+                  <small>Max 25 students</small>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="price">
+                  <span class="h5 text-primary">₹45,000</span>
+                  <small class="text-muted text-decoration-line-through">₹60,000</small>
+                </div>
+                <span class="badge bg-success">25% OFF</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="register.html" class="btn btn-warning w-100">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-category="competitive">
+          <div class="card animate-on-scroll">
+            <img src="assets/courses.jpg" class="card-img-top" alt="NEET Preparation">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="badge bg-danger">Competitive</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <small class="text-muted ms-1">(4.8)</small>
+                </div>
+              </div>
+              <h5 class="card-title text-primary">NEET Preparation</h5>
+              <p class="card-text">Complete NEET preparation covering Physics, Chemistry, Biology with regular assessments and doubt clearing.</p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <i class="fas fa-clock text-warning me-1"></i>
+                  <small>24 Weeks</small>
+                </div>
+                <div>
+                  <i class="fas fa-users text-warning me-1"></i>
+                  <small>Max 20 students</small>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="price">
+                  <span class="h5 text-primary">₹42,000</span>
+                  <small class="text-muted text-decoration-line-through">₹56,000</small>
+                </div>
+                <span class="badge bg-success">25% OFF</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="register.html" class="btn btn-warning w-100">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-category="skill">
+          <div class="card animate-on-scroll">
+            <img src="assets/courses.jpg" class="card-img-top" alt="Computer Programming">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="badge bg-warning">Skill Development</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <small class="text-muted ms-1">(4.6)</small>
+                </div>
+              </div>
+              <h5 class="card-title text-primary">Computer Programming</h5>
+              <p class="card-text">Learn programming fundamentals with Python, web development basics, and logical thinking skills.</p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <i class="fas fa-clock text-warning me-1"></i>
+                  <small>14 Weeks</small>
+                </div>
+                <div>
+                  <i class="fas fa-users text-warning me-1"></i>
+                  <small>Max 18 students</small>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="price">
+                  <span class="h5 text-primary">₹25,000</span>
+                  <small class="text-muted text-decoration-line-through">₹32,000</small>
+                </div>
+                <span class="badge bg-success">22% OFF</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="register.html" class="btn btn-warning w-100">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h3 class="text-center mb-5 animate-on-scroll">What Makes Our Courses Special?</h3>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-box animate-on-scroll">
+            <div class="feature-icon">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <h5>Certified Programs</h5>
+            <p>All courses come with industry-recognized certificates upon completion.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-box animate-on-scroll">
+            <div class="feature-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h5>Flexible Schedule</h5>
+            <p>Choose from morning, evening, or weekend batches to fit your schedule.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-box animate-on-scroll">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h5>24/7 Support</h5>
+            <p>Get help and clear doubts anytime with our dedicated support team.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-box animate-on-scroll">
+            <div class="feature-icon">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <h5>Affordable Fees</h5>
+            <p>Quality education at competitive prices with easy installment options.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container text-center">
+      <h3 class="mb-4 animate-on-scroll">Stay Updated with New Courses</h3>
+      <p class="mb-4 animate-on-scroll">Be the first to know about new course launches and special offers.</p>
+      <form class="d-flex justify-content-center animate-on-scroll" style="max-width: 500px; margin: 0 auto;">
+        <input type="email" class="form-control me-3" placeholder="Enter your email address" required />
+        <button class="btn btn-warning px-4" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="pt-5 pb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <h5 class="mb-3">Aaranshi Education Hub</h5>
+          <p class="mb-3">Empowering students with quality education, innovative teaching methods, and personalized guidance for a brighter future.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h6 class="mb-3">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html">Home</a></li>
+            <li class="mb-2"><a href="about.html">About Us</a></li>
+            <li class="mb-2"><a href="courses.html">Courses</a></li>
+            <li class="mb-2"><a href="teachers.html">Teachers</a></li>
+            <li class="mb-2"><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h6 class="mb-3">Contact Info</h6>
+          <div class="mb-2">
+            <i class="fas fa-map-marker-alt me-2"></i>
+            123 Learning St, Pune, India
+          </div>
+          <div class="mb-2">
+            <i class="fas fa-envelope me-2"></i>
+            info@aaranshiedu.com
+          </div>
+          <div class="mb-2">
+            <i class="fas fa-phone me-2"></i>
+            +91 9876543210
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h6 class="mb-3">Office Hours</h6>
+          <div class="mb-2">Monday - Friday: 9:00 AM - 7:00 PM</div>
+          <div class="mb-2">Saturday: 9:00 AM - 5:00 PM</div>
+          <div class="mb-2">Sunday: Closed</div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center bg-dark py-3 mt-4">
+      <div class="container">
+        &copy; 2025 Aaranshi Education Hub. All rights reserved. | Designed with ❤️ for education
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

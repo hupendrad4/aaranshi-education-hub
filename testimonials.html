@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Testimonials | Aranshi Education Hub</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- jQuery (for optional header/footer includes below) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Theme styles -->
+  <style>
+    :root{
+      --edu-bg: #A8E9F0;        /* light cyan-blue */
+      --edu-navy: #004B63;      /* headline/navy */
+      --edu-green: #22B573;     /* accent (primary CTA) */
+      --edu-ink: #0a2f3d;       /* body text */
+      --edu-white: #ffffff;
+      --edu-muted: #5c7d88;     /* subtle text */
+      --shadow-soft: 0 10px 25px rgba(0,0,0,.07);
+      --transition: all .25s ease;
+    }
+
+    html, body{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--edu-ink);
+      background: #f7fbfc;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+    }
+
+    /* -------- Buttons (keep styling consistent across site) -------- */
+    .btn-cta{
+      background: var(--edu-green);
+      color: #fff;
+      font-weight: 700;
+      border: 0;
+      border-radius: 999px;
+      padding: .8rem 1.25rem;
+      transition: var(--transition);
+    }
+    .btn-cta:hover{ filter: brightness(.95); color:#fff; }
+
+    .btn-ghost{
+      background: transparent;
+      color: var(--edu-navy);
+      border: 2px solid var(--edu-navy);
+      font-weight: 700;
+      border-radius: 999px;
+      padding: .8rem 1.25rem;
+      transition: var(--transition);
+    }
+    .btn-ghost:hover{ background: #ffffff1a; color: var(--edu-navy); }
+
+    .btn-join{
+      border: 2px solid var(--edu-green);
+      color: var(--edu-green) !important;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: .55rem 1rem;
+      transition: var(--transition);
+      background: transparent;
+    }
+    .btn-join:hover{ background: var(--edu-green); color:#fff !important; }
+
+    .btn-sub{
+      background: var(--edu-green);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: .85rem 1.35rem;
+      border: 0;
+      transition: var(--transition);
+    }
+    .btn-sub:hover{ filter: brightness(.95); color:#fff; }
+
+    /* -------- Loader (fixed) -------- */
+    .loading{
+      position: fixed; inset: 0;
+      background: rgba(255,255,255,.9);
+      display: none;              /* hidden by default */
+      place-items: center; z-index: 2000;
+    }
+    .loading.show{ display: grid; } /* only show when .show is present */
+    .spinner{
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 4px solid var(--edu-bg);
+      border-top-color: var(--edu-navy);
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg) } }
+
+    /* -------- Topbar -------- */
+    .topbar{
+      background: var(--edu-bg);
+      color: var(--edu-navy);
+      font-weight: 500;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .topbar a{ color: var(--edu-navy); opacity:.9; }
+    .topbar a:hover{ opacity:1; }
+    .kicker{
+      background: rgba(168,233,240,.25);
+      border: 1px solid rgba(0,0,0,.08);
+      color: #0b4b5e;
+      display:inline-flex; gap:.5rem; align-items:center;
+      padding:.35rem .75rem; border-radius:999px; font-weight:600;
+    }
+
+    /* -------- Navbar -------- */
+    .navbar{
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+    }
+    .navbar-brand{ color: var(--edu-navy) !important; letter-spacing: .5px; }
+    .navbar .nav-link{ color: var(--edu-ink); font-weight: 500; }
+    .navbar .nav-link.active, .navbar .nav-link:hover{ color: var(--edu-navy); }
+
+    /* -------- Hero -------- */
+    .hero{
+      min-height: 64vh;
+      position: relative;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; overflow: hidden;
+      background: url('assets/testimonials.jpg') center/cover no-repeat;
+    }
+    .hero::before{
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,75,99,.65), rgba(0,75,99,.35)),
+        radial-gradient(80rem 40rem at 60% -10%, rgba(168,233,240,.55), transparent 60%);
+      mix-blend-mode: multiply;
+    }
+    .shape{ width:12px; height:12px; background: var(--edu-green); border-radius: 3px; display:inline-block; margin:0 .2rem; opacity:.7; }
+
+    /* -------- Section heading -------- */
+    .section-title{
+      color: var(--edu-navy);
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    /* -------- Testimonial Cards -------- */
+    .t-card{
+      border: 0; border-radius: 1.25rem;
+      box-shadow: var(--shadow-soft);
+      padding: 2rem;
+      transition: transform .25s ease, box-shadow .25s ease;
+      background: #fff; position: relative; overflow: hidden; height:100%;
+    }
+    .t-card::after{
+      content:""; position:absolute; top:0; left:0; right:0; height:6px;
+      background: linear-gradient(90deg, var(--edu-green), #72f1b7);
+    }
+    .t-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 30px rgba(0,0,0,.09); }
+    .avatar{
+      width: 88px; height: 88px; object-fit: cover; border-radius: 50%;
+      border: 4px solid var(--edu-bg); box-shadow: 0 6px 12px rgba(0,0,0,.08);
+    }
+    .quote{ color: var(--edu-muted); line-height: 1.8; }
+    .rating i{ color:#F2C94C; }
+    .name{ color: var(--edu-navy); font-weight: 700; margin-top: .75rem; }
+    .tag{ color: var(--edu-muted); font-weight: 500; }
+
+    /* -------- Newsletter -------- */
+    .newsletter{
+      background: linear-gradient(135deg, var(--edu-bg), #d3f6fa);
+      color: var(--edu-navy);
+      position: relative; overflow: hidden;
+    }
+    .newsletter::after{
+      content:""; position:absolute; right:-12rem; bottom:-10rem;
+      width: 28rem; height: 28rem; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(34,181,115,.15), transparent 70%);
+      filter: blur(2px);
+    }
+    .newsletter .form-control{
+      max-width: 520px; border-radius: 999px;
+      padding: .8rem 1.1rem; border: 2px solid rgba(0,75,99,.18);
+      background: #fff;
+    }
+
+    /* -------- Back to top -------- */
+    .back-to-top{
+      position: fixed; right: 18px; bottom: 18px;
+      width: 44px; height:44px; border-radius: 50%;
+      display:flex; align-items:center; justify-content:center;
+      background: var(--edu-green); color:#fff;
+      box-shadow: 0 12px 22px rgba(34,181,115,.35);
+      z-index: 1050; opacity:0; visibility:hidden; transform: translateY(10px);
+      transition: all .25s ease;
+    }
+    .back-to-top.show{ opacity:1; visibility:visible; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen (now safe) -->
+  <div class="loading show" id="loading">
+    <div class="spinner" aria-label="Loading"></div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Optional shared header include -->
+  <div id="header"></div>
+
+
+    <!-- Hero -->
+    <header class="hero text-center">
+      <div class="position-relative z-1 container py-5">
+        <div class="mb-3">
+          <span class="kicker"><span class="shape"></span> Real Results <span class="shape"></span></span>
+        </div>
+        <h1 class="display-5 fw-bold">Student Testimonials</h1>
+        <p class="lead">Hear from our Achievers & Alumni</p>
+        <!-- Optional CTA buttons under hero (keeps same styling) -->
+        <div class="d-flex gap-2 justify-content-center mt-3">
+          <a href="courses.html" class="btn-cta">Explore Courses</a>
+          <a href="contact.html" class="btn-ghost">Talk to a Counselor</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Testimonials -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="text-center section-title mb-4">What Our Students Say</h2>
+        <p class="text-center text-muted mb-5">
+          Proven outcomes with supportive mentors, structured material, and personalized guidance.
+        </p>
+
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-md-4">
+            <div class="t-card text-center">
+              <img src="https://source.unsplash.com/100x100/?girl,student" class="avatar mx-auto mb-3" alt="Pooja Rane headshot" loading="lazy">
+              <div class="rating mb-2" aria-label="5 star rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote">“Aaranshi gave me the right direction for JEE prep. The teachers were extremely helpful, and the doubt-solving sessions made a huge difference.”</p>
+              <div class="name">Pooja Rane</div>
+              <div class="tag">Cleared JEE Mains 2024</div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-md-4">
+            <div class="t-card text-center">
+              <img src="https://source.unsplash.com/100x100/?boy,student" class="avatar mx-auto mb-3" alt="Ravi Malhotra headshot" loading="lazy">
+              <div class="rating mb-2" aria-label="5 star rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote">“Their course material is well-structured and aligned with the syllabus. I scored 96% in boards and I owe a lot to the mentorship I received here.”</p>
+              <div class="name">Ravi Malhotra</div>
+              <div class="tag">Class 12th CBSE Topper</div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-md-4">
+            <div class="t-card text-center">
+              <img src="https://source.unsplash.com/100x100/?woman,student" class="avatar mx-auto mb-3" alt="Neha Singh headshot" loading="lazy">
+              <div class="rating mb-2" aria-label="5 star rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote">“Amazing teaching staff and personalized attention. They helped me crack NEET with great scores. I recommend it to every aspirant.”</p>
+              <div class="name">Neha Singh</div>
+              <div class="tag">Selected in NEET 2024</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional CTA centered under testimonials with consistent styling -->
+        <div class="text-center mt-4">
+          <a href="register.html" class="btn-cta">Join Our Next Batch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="newsletter py-5 text-center">
+      <div class="container">
+        <h4 class="fw-bold mb-3">Subscribe for More Success Stories</h4>
+        <form class="d-flex flex-column flex-sm-row justify-content-center align-items-stretch gap-2 mx-auto" style="max-width:760px">
+          <input type="email" class="form-control" placeholder="Your Email Address" required aria-label="Email address"/>
+          <button class="btn-sub" type="submit"><i class="fa-regular fa-paper-plane me-2"></i>Subscribe</button>
+        </form>
+        <small class="d-block mt-2 text-muted">We respect your privacy. Unsubscribe anytime.</small>
+      </div>
+    </section>
+  </main>
+
+  <!-- Optional shared footer include -->
+  <div id="footer"></div>
+
+  <!-- Bootstrap JS (Bundle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- WOW.js (optional animations) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+  <!-- Page interactions + Loader fix -->
+  <script>
+    // WOW animations
+    if (typeof WOW === 'function') { new WOW().init(); }
+
+    // Hide loader robustly
+    (function(){
+      const hideLoader = () => {
+        const el = document.getElementById('loading');
+        if (el) el.classList.remove('show');
+      };
+      document.addEventListener('DOMContentLoaded', hideLoader);
+      window.addEventListener('load', hideLoader);
+      setTimeout(hideLoader, 3000); // failsafe in case of slow/404 assets
+    })();
+
+    // Back-to-top toggle
+    (function(){
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+      });
+    })();
+
+    // Load shared header/footer if present (safe: even if 404, loader already hides)
+    $(function(){
+      $("#header").load("components/header.html", function() {
+        // mark active
+        const current = "testimonials.html";
+        $('.nav-link').each(function(){
+          const linkPage = ($(this).attr('href')||'').split('/').pop();
+          if (linkPage === current) $(this).addClass('active');
+        });
+      });
+      $("#footer").load("components/footer.html");
+    });
+  </script>
+</body>
+</html>
