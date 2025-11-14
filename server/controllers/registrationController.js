@@ -3,29 +3,33 @@ const nodemailer = require('nodemailer');
 const { createLogger } = require('winston');
 const logger = require('../config/logger');
 
-// Email configuration
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT || 587,
-  secure: process.env.SMTP_SECURE === 'true',
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASSWORD
-  },
-  tls: {
-    // Do not fail on invalid certs
-    rejectUnauthorized: process.env.NODE_ENV === 'production'
-  }
-});
+// Email configuration (only if SMTP settings are provided)
+let transporter;
+if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD) {
+  transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT || 587,
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASSWORD
+    },
+    tls: {
+      rejectUnauthorized: process.env.NODE_ENV === 'production'
+    }
+  });
 
-// Verify connection configuration
-transporter.verify(function(error, success) {
-  if (error) {
-    logger.error('SMTP connection error:', error);
-  } else {
-    logger.info('SMTP server is ready to take our messages');
-  }
-});
+  // Verify connection configuration
+  transporter.verify(function(error) {
+    if (error) {
+      logger.warn('SMTP connection error (emails will not be sent):', error.message);
+    } else {
+      logger.info('SMTP server is ready to send emails');
+    }
+  });
+} else {
+  logger.warn('SMTP configuration is incomplete. Email notifications will be disabled.');
+}
 
 /**
  * Handle registration form submission
@@ -97,27 +101,30 @@ exports.submitRegistration = async (req, res, next) => {
       replyTo: email
     };
 
-    // Send email
-    await transporter.sendMail(mailOptions);
-    
-    // Send confirmation email to student if email is provided
-    if (email) {
-      const studentMailOptions = {
-        from: `"Aranshi Education Hub" <${process.env.EMAIL_FROM || process.env.SMTP_USER}>`,
-        to: email,
-        subject: 'Thank You for Registering with Aranshi Education Hub',
-        html: `
-          <h2>Thank You for Your Registration!</h2>
-          <p>Dear ${firstName},</p>
-          <p>Thank you for registering with Aranshi Education Hub. We have received your application and will review it shortly.</p>
-          <p>Here's a summary of your registration:</p>
-          <ul>
-            <li><strong>Name:</strong> ${firstName} ${lastName}</li>
-            <li><strong>Grade/Class:</strong> ${grade}</li>
-            <li><strong>Contact Number:</strong> ${phone}</li>
-          </ul>
-          <p>We will contact you soon with further details about the admission process.</p>
-          <p>If you have any questions, feel free to contact us at ${process.env.CONTACT_PHONE || 'our office number'}.</p>
+    // Send admin notification email if transporter is configured
+    if (transporter) {
+      try {
+        await transporter.sendMail(mailOptions);
+        logger.info(`Admin notification email sent for ${firstName} ${lastName}`);
+        
+        // Send confirmation email to student if email is provided
+        if (email) {
+          const studentMailOptions = {
+            from: `"Aranshi Education Hub" <${process.env.EMAIL_FROM || process.env.SMTP_USER || 'noreply@aranshieducationhub.com'}>`,
+            to: email,
+            subject: 'Thank You for Registering with Aranshi Education Hub',
+            html: `
+              <h2>Thank You for Your Registration!</h2>
+              <p>Dear ${firstName},</p>
+              <p>Thank you for registering with Aranshi Education Hub. We have received your application and will review it shortly.</p>
+              <p>Here's a summary of your registration:</p>
+              <ul>
+                <li><strong>Name:</strong> ${firstName} ${lastName}</li>
+                <li><strong>Grade/Class:</strong> ${grade}</li>
+                <li><strong>Contact Number:</strong> ${phone}</li>
+              </ul>
+              <p>We will contact you soon with further details about the admission process.</p>
+              <p>If you have any questions, feel free to contact us at ${process.env.CONTACT_PHONE || 'our office number'}.</p>
           <p>Best regards,<br>The Aranshi Education Hub Team</p>
           <p style="margin-top: 20px; color: #666; font-size: 0.9em;">
             This is an automated message. Please do not reply to this email.
@@ -125,16 +132,22 @@ exports.submitRegistration = async (req, res, next) => {
         `
       };
       
-      transporter.sendMail(studentMailOptions).catch(error => {
-        logger.error('Error sending confirmation email:', error);
-      });
+      await transporter.sendMail(studentMailOptions);
+      logger.info(`Confirmation email sent to ${email}`);
     }
+  } catch (emailError) {
+    logger.error('Error sending email:', emailError);
+    // Don't fail the request if email sending fails
+  }
+} else {
+  logger.warn('Email notifications are disabled. No emails were sent.');
+}
 
     // Log the registration
     logger.info(`New registration received from ${firstName} ${lastName} (${email})`);
 
     // Send success response
-    res.status(200).json({
+    const response = {
       success: true,
       message: 'Registration successful! We will contact you soon.',
       data: {
@@ -142,7 +155,13 @@ exports.submitRegistration = async (req, res, next) => {
         email: email,
         phone: phone
       }
-    });
+    };
+
+    if (!transporter) {
+      response.message += ' (Email notifications are currently disabled)';
+    }
+
+    res.status(200).json(response);
 
   } catch (error) {
     logger.error('Registration error:', error);

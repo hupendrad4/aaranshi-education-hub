@@ -1,22 +1,29 @@
 <!-- Top Bar -->
-<!-- Top Bar -->
-<div class="topbar py-2">
-  <div class="container px-3 px-md-4 px-lg-3">
+<div class="topbar py-2 bg-light d-none d-md-block">
+  <div class="container">
     <div class="row align-items-center gx-0">
       <div class="col-12 col-md-7 col-lg-8">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
-          <span class="kicker d-none d-md-inline-flex me-2 mb-1 mb-md-0"><i class="fa-solid fa-star"></i> Trusted by top scorers</span>
+          <span class="kicker d-none d-md-inline-flex me-2 mb-1 mb-md-0">
+            <i class="fa-solid fa-star text-warning me-1"></i> Trusted by top scorers
+          </span>
           <span class="d-none d-md-inline mx-2 text-muted">|</span>
-          <span class="text-nowrap me-2 me-md-3 mb-1 mb-md-0"><i class="fas fa-phone-alt me-1"></i> <a href="tel:+919876543210" class="text-decoration-none">+91 98765 43210</a></span>
-          <span class="text-nowrap"><i class="fas fa-envelope me-1"></i> <a href="mailto:info@aranshieduhub.com" class="text-decoration-none">info@aranshieduhub.com</a></span>
+          <span class="text-nowrap me-2 me-md-3 mb-1 mb-md-0">
+            <i class="fas fa-phone-alt me-1"></i> 
+            <a href="tel:+919876543210" class="text-decoration-none text-dark">+91 98765 43210</a>
+          </span>
+          <span class="text-nowrap">
+            <i class="fas fa-envelope me-1"></i> 
+            <a href="mailto:info@aaranshieduhub.com" class="text-decoration-none text-dark">info@aaranshieduhub.com</a>
+          </span>
         </div>
       </div>
       <div class="col-12 col-md-5 col-lg-4 mt-2 mt-md-0">
         <div class="social-links d-flex justify-content-center justify-content-md-end">
-          <a href="#" class="mx-1 mx-md-2" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="mx-1 mx-md-2" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="mx-1 mx-md-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="mx-1 mx-md-2" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="text-dark mx-2" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-dark mx-2" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-dark mx-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-dark mx-2" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
     </div>
@@ -24,66 +31,36 @@
 </div>
 
 <!-- Main Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-  <div class="container px-3 px-md-4 px-lg-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
     <a class="navbar-brand fw-bold fs-3" href="index.html">
-      <span style="color: var(--color-primary);">Aranshi</span>
-      <span style="color: var(--color-accent);">Education Hub</span>
+      <span style="color: #004B63;">Aaranshi</span>
+      <span style="color: #22B573;">Education Hub</span>
     </a>
-    <button class="navbar-toggler d-lg-none" type="button" id="mobileMenuToggler" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     
-    <!-- Mobile Sidebar Menu -->
-    <div class="mobile-sidebar" id="mobileSidebar">
-      <div class="mobile-sidebar-header">
-        <a class="navbar-brand fw-bold fs-3" href="index.html">
-          <span style="color: var(--color-primary);">Aranshi</span>
-          <span style="color: var(--color-accent);">Education Hub</span>
-        </a>
-        <button class="close-menu" id="closeMobileMenu">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="mobile-menu-content">
-        <ul class="navbar-nav">
-      <ul class="navbar-nav align-items-lg-center">
+    <!-- Desktop Menu -->
+    <div class="d-none d-lg-block">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" href="index.html">Home</a>
         </li>
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            About Us
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-            <li><a class="dropdown-item" href="about.html">Our Story</a></li>
-            <li><a class="dropdown-item" href="#">Our Mission</a></li>
-            <li><a class="dropdown-item" href="#">Our Team</a></li>
-            <li><a class="dropdown-item" href="#">Why Choose Us</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About Us</a>
         </li>
-
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="courses.html" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" 
+             data-bs-toggle="dropdown" aria-expanded="false">
             Courses
           </a>
           <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
             <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
-            <li><a class="dropdown-item" href="#">Science Stream</a></li>
-            <li><a class="dropdown-item" href="#">Commerce Stream</a></li>
-            <li><a class="dropdown-item" href="#">Competitive Exams</a></li>
+            <li><a class="dropdown-item" href="#">JEE Main & Advanced</a></li>
+            <li><a class="dropdown-item" href="#">NEET</a></li>
+            <li><a class="dropdown-item" href="#">Foundation (8th-10th)</a></li>
           </ul>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="teachers.html">Teachers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="events.html">Events</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="testimonials.html">Testimonials</a>
@@ -91,375 +68,408 @@
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
-
-        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-          <a href="register.html" class="btn btn-primary">Register Now</a>
-          
+        <li class="nav-item ms-lg-3 my-2 my-lg-0">
+          <a href="register.html" class="btn btn-primary px-4">Register Now</a>
         </li>
-          <li class="nav-item">
-            <a class="nav-link" href="register.html" style="color: var(--color-accent); font-weight: 600;">
-              <i class="fas fa-user-plus me-2"></i>Register Now
-            </a>
-          </li>
-        </ul>
+      </ul>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button class="navbar-toggler d-lg-none border-0 shadow-none p-2" type="button" id="mobileMenuToggler" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileSidebar" style="z-index: 1070;">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  
+  <!-- Mobile Sidebar Menu -->
+  <div class="mobile-sidebar" id="mobileSidebar" aria-hidden="true">
+    <div class="mobile-sidebar-header">
+      <a class="navbar-brand fw-bold fs-3" href="index.html">
+        <span style="color: #004B63;">Aaranshi</span>
+        <span style="color: #22B573;">Education Hub</span>
+      </a>
+      <button class="close-menu" id="closeMobileMenu" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-menu-content p-3">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link py-2 d-flex align-items-center" href="index.html">
+            <i class="fas fa-home me-2"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-2 d-flex align-items-center" href="about.html">
+            <i class="fas fa-info-circle me-2"></i> About Us
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-2 d-flex align-items-center" href="courses.html">
+            <i class="fas fa-book me-2"></i> Courses
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-2 d-flex align-items-center" href="teachers.html">
+            <i class="fas fa-chalkboard-teacher me-2"></i> Teachers
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-2 d-flex align-items-center" href="testimonials.html">
+            <i class="fas fa-quote-left me-2"></i> Testimonials
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-2 d-flex align-items-center" href="contact.html">
+            <i class="fas fa-envelope me-2"></i> Contact
+          </a>
+        </li>
+        <li class="nav-item mt-4">
+          <a href="register.html" class="btn btn-primary w-100 py-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-user-plus me-2"></i> Register Now
+          </a>
+        </li>
+      </ul>
+      
+      <div class="mobile-contact-info mt-4">
+        <h6 class="text-uppercase text-muted mb-3">Contact Us</h6>
+        <p><i class="fas fa-phone-alt me-2"></i> +91 98765 43210</p>
+        <p><i class="fas fa-envelope me-2"></i> info@aaranshieduhub.com</p>
+        <div class="social-links mt-3">
+          <a href="#" class="me-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="me-3" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+</nav>
 
-    <!-- Desktop Menu -->
-    <div class="collapse navbar-collapse justify-content-end d-none d-lg-block" id="mainNavbar">
+<style>
+/* Mobile Menu Styles */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 320px;
+  max-width: 85%;
+  height: 100vh;
+  background: white;
+  z-index: 1050;
+  transition: right 0.3s ease-in-out;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-sidebar.show {
+  right: 0;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 1060;
+}
+
+/* Prevent body scroll when menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Overlay for mobile menu */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Top Bar */
+.topbar {
+  background: var(--edu-bg);
+  color: var(--edu-navy);
+  font-weight: 500;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 767.98px) {
+  .topbar {
+    padding: 0.6rem 0;
+  }
+  .topbar .row > div {
+    padding: 0.2rem 0;
+  }
+  .topbar .social-links {
+    padding-top: 0.8rem;
+    margin-top: 0.3rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .topbar .container {
+    padding: 0 1rem;
+  }
+}
+
+.topbar a {
+  color: var(--edu-navy);
+  opacity: .9;
+  transition: var(--transition);
+  font-size: 0.85rem;
+}
+
+.topbar a:hover { 
+  opacity: 1; 
+  text-decoration: none;
+  color: var(--edu-green);
+}
+
+.social-links a {
+  color: var(--edu-navy);
+  font-size: 0.95rem;
+  transition: var(--transition);
+  opacity: 0.9;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+}
+
+.social-links a:hover {
+  color: white;
+  background: var(--edu-green);
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.kicker {
+  background: rgba(168,233,240,.25);
+  border: 1px solid rgba(0,0,0,.08);
+  color: #0b4b5e;
+  display: inline-flex;
+  gap: .4rem;
+  align-items: center;
+  padding: .25rem .6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 4px 16px rgba(0,0,0,.05);
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar-brand span {
+  font-weight: 700;
+}
+
+.nav-link {
+  color: var(--edu-navy);
+  font-weight: 500;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--edu-green) !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  background-color: var(--edu-green);
+  transform: translateX(-50%);
+  transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 70%;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  border: none;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  padding: 0.5rem 0;
+}
+
+.dropdown-item {
+  padding: 0.6rem 1.5rem;
+  color: var(--edu-navy);
+  transition: var(--transition);
+}
+
+.dropdown-item:hover {
+  background-color: var(--edu-bg);
+  color: var(--edu-navy);
+}
+
+/* Register Button */
+.btn-join {
+  border: 2px solid var(--edu-green);
+  color: var(--edu-green);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: .5rem 1.2rem;
+  transition: var(--transition);
+}
+
+.btn-join:hover {
+  background: var(--edu-green);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: var(--shadow-soft);
+    margin-top: 0.75rem;
+  }
+
+  .nav-item {
+    margin: 0.4rem 0;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem !important;
+  }
+
+  .dropdown-menu {
+    margin-left: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+</style>
+
+<script>
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuToggler = document.getElementById('mobileMenuToggler');
+  const closeMobileMenu = document.getElementById('closeMobileMenu');
+  const mobileSidebar = document.getElementById('mobileSidebar');
+  const body = document.body;
   
-  <style>
-    /* Mobile Menu Styles */
-    .mobile-menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .mobile-menu-overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .mobile-sidebar {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 85%;
-      max-width: 350px;
-      height: 100%;
-      background: white;
-      z-index: 1000;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .mobile-sidebar.show {
-      right: 0;
-    }
-    
-    .mobile-sidebar-header {
-      padding: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .mobile-sidebar .navbar-brand {
-      font-size: 1.25rem !important;
-      margin: 0;
-    }
-    
-    .close-menu {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--edu-navy);
-      cursor: pointer;
-      padding: 0.5rem;
-      line-height: 1;
-    }
-    
-    .mobile-menu-content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1.5rem;
-    }
-    
-    .mobile-sidebar .nav-item {
-      margin-bottom: 0.5rem;
-      border-bottom: 1px solid #f5f5f5;
-    }
-    
-    .mobile-sidebar .nav-link {
-      padding: 0.75rem 0;
-      font-size: 1rem;
-      color: var(--edu-navy);
-      display: flex;
-      align-items: center;
-    }
-    
-    .mobile-sidebar .nav-link i {
-      margin-right: 0.75rem;
-      width: 20px;
-      text-align: center;
-    }
-    
-    .mobile-sidebar .dropdown-menu {
-      position: static !important;
-      border: none;
-      padding: 0;
-      margin: 0.5rem 0 0.5rem 1.5rem;
-      box-shadow: none;
-    }
-    
-    .mobile-sidebar .dropdown-item {
-      padding: 0.5rem 0;
-      color: var(--edu-muted);
-    }
-    
-    .mobile-sidebar .dropdown-item:hover {
-      background: transparent;
-      color: var(--edu-green);
-    }
-    
-    :root {
-      --edu-bg: #A8E9F0;
-      --edu-navy: #004B63;
-      --edu-green: #22B573;
-      --edu-muted: #5c7d88;
-      --shadow-soft: 0 10px 25px rgba(0,0,0,.07);
-      --transition: all 0.3s ease;
-    }
-  
-    /* Top Bar */
-    .topbar {
-      background: var(--edu-bg);
-      color: var(--edu-navy);
-      font-weight: 500;
-      border-bottom: 1px solid rgba(0,0,0,.06);
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.85rem;
-      line-height: 1.4;
-    }
-    
-    @media (max-width: 767.98px) {
-      .topbar {
-        padding: 0.6rem 0;
-      }
-      .topbar .row > div {
-        padding: 0.2rem 0;
-      }
-      .topbar .social-links {
-        padding-top: 0.8rem;
-        margin-top: 0.3rem;
-        border-top: 1px solid rgba(0,0,0,0.08);
-      }
-      .topbar .container {
-        padding: 0 1rem;
-      }
-    }
-  
-    .topbar a {
-      color: var(--edu-navy);
-      opacity: .9;
-      transition: var(--transition);
-      font-size: 0.85rem;
-    }
-  
-    .topbar a:hover { 
-      opacity: 1; 
-      text-decoration: none;
-      color: var(--edu-green);
-    }
-  
-    .social-links a {
-      color: var(--edu-navy);
-      font-size: 0.95rem;
-      transition: var(--transition);
-      opacity: 0.9;
-      width: 28px;
-      height: 28px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-    }
-  
-    .social-links a:hover {
-      color: white;
-      background: var(--edu-green);
-      transform: translateY(-2px);
-      opacity: 1;
-    }
-  
-    .kicker {
-      background: rgba(168,233,240,.25);
-      border: 1px solid rgba(0,0,0,.08);
-      color: #0b4b5e;
-      display: inline-flex;
-      gap: .4rem;
-      align-items: center;
-      padding: .25rem .6rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.75rem;
-      white-space: nowrap;
-    }
-  
-    /* Navbar */
-    .navbar {
-      box-shadow: 0 4px 16px rgba(0,0,0,.05);
-      font-family: 'Poppins', sans-serif;
-    }
-  
-    .navbar-brand span {
-      font-weight: 700;
-    }
-  
-    .nav-link {
-      color: var(--edu-navy);
-      font-weight: 500;
-      position: relative;
-      transition: var(--transition);
-    }
-  
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--edu-green) !important;
-    }
-  
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -2px;
-      left: 50%;
-      background-color: var(--edu-green);
-      transform: translateX(-50%);
-      transition: var(--transition);
-    }
-  
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 70%;
-    }
-  
-    /* Dropdown Menu */
-    .dropdown-menu {
-      border: none;
-      border-radius: 8px;
-      box-shadow: var(--shadow-soft);
-      padding: 0.5rem 0;
-    }
-  
-    .dropdown-item {
-      padding: 0.6rem 1.5rem;
-      color: var(--edu-navy);
-      transition: var(--transition);
-    }
-  
-    .dropdown-item:hover {
-      background-color: var(--edu-bg);
-      color: var(--edu-navy);
-    }
-  
-    /* Register Button */
-    .btn-join {
-      border: 2px solid var(--edu-green);
-      color: var(--edu-green);
-      font-weight: 600;
-      border-radius: 999px;
-      padding: .5rem 1.2rem;
-      transition: var(--transition);
-    }
-  
-    .btn-join:hover {
-      background: var(--edu-green);
-      color: #fff;
-    }
-  
-    /* Responsive */
-    @media (max-width: 991.98px) {
-      .navbar-collapse {
-        background: #fff;
-        border-radius: 10px;
-        padding: 1rem;
-        box-shadow: var(--shadow-soft);
-        margin-top: 0.75rem;
-      }
-  
-      .nav-item {
-        margin: 0.4rem 0;
-      }
-  
-      .nav-link {
-        padding: 0.75rem 1rem !important;
-      }
-  
-      .dropdown-menu {
-        margin-left: 1rem;
-        width: calc(100% - 2rem);
-      }
-    }
-  </style>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuToggler = document.getElementById('mobileMenuToggler');
-      const closeMobileMenu = document.getElementById('closeMobileMenu');
-      const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-      const mobileSidebar = document.getElementById('mobileSidebar');
-      
-      // Toggle mobile menu
-      function toggleMobileMenu() {
-        mobileMenuOverlay.classList.toggle('show');
-        mobileSidebar.classList.toggle('show');
-        document.body.style.overflow = mobileSidebar.classList.contains('show') ? 'hidden' : '';
-      }
-      
-      // Close mobile menu when clicking outside
-      function closeMenuOnClickOutside(event) {
-        if (mobileSidebar.classList.contains('show') && !mobileSidebar.contains(event.target) && !mobileMenuToggler.contains(event.target)) {
-          toggleMobileMenu();
-        }
-      }
-      
-      // Event listeners
-      mobileMenuToggler.addEventListener('click', toggleMobileMenu);
-      closeMobileMenu.addEventListener('click', toggleMobileMenu);
-      mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
-      
-      // Close menu when clicking on a nav link
-      const navLinks = document.querySelectorAll('.mobile-sidebar .nav-link');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          // If it's a dropdown toggle, prevent default and toggle the dropdown
-          if (this.classList.contains('dropdown-toggle')) {
-            event.preventDefault();
-            const dropdownMenu = this.nextElementSibling;
-            dropdownMenu.classList.toggle('show');
-          } else {
-            // For regular links, close the menu
-            toggleMobileMenu();
-          }
-        });
-      });
-      
-      // Close menu when window is resized to desktop
-      function handleResize() {
-        if (window.innerWidth >= 992) {
-          mobileMenuOverlay.classList.remove('show');
-          mobileSidebar.classList.remove('show');
-          document.body.style.overflow = '';
-        }
-      }
-      
-      window.addEventListener('resize', handleResize);
-      
-      // Close menu when clicking outside on mobile
-      document.addEventListener('click', closeMenuOnClickOutside);
+  // Close menu when clicking on a nav link
+  const navLinks = document.querySelectorAll('.mobile-sidebar .nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileSidebar.classList.remove('show');
+      body.classList.remove('mobile-menu-open');
+      mobileMenuToggler.setAttribute('aria-expanded', 'false');
     });
-  </script>
+  });
+
+  function toggleMobileMenu() {
+    const isExpanded = mobileMenuToggler.getAttribute('aria-expanded') === 'true';
+    mobileMenuToggler.setAttribute('aria-expanded', !isExpanded);
+    mobileSidebar.classList.toggle('show');
+    
+    // Toggle overlay
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    if (!overlay) {
+      const newOverlay = document.createElement('div');
+      newOverlay.className = 'mobile-menu-overlay';
+      newOverlay.addEventListener('click', toggleMobileMenu);
+      document.body.appendChild(newOverlay);
+    } else {
+      overlay.classList.toggle('show');
+    }
+    
+    // Toggle body class for scroll lock
+    body.classList.toggle('mobile-menu-open', !isExpanded);
+  }
+
+  // Event Listeners
+  if (mobileMenuToggler) {
+    // Remove any existing event listeners to prevent duplicates
+    const newToggler = mobileMenuToggler.cloneNode(true);
+    mobileMenuToggler.parentNode.replaceChild(newToggler, mobileMenuToggler);
+    
+    // Add fresh event listener
+    newToggler.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+    
+    // Also make sure the menu can be toggled by clicking the icon itself
+    const togglerIcon = newToggler.querySelector('.navbar-toggler-icon');
+    if (togglerIcon) {
+      togglerIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+    }
+  }
+
+  if (closeMobileMenu) {
+    closeMobileMenu.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Close menu when window is resized to desktop
+  function handleResize() {
+    if (window.innerWidth >= 992 && mobileSidebar) {
+      mobileSidebar.classList.remove('show');
+      body.classList.remove('mobile-menu-open');
+      mobileMenuToggler.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  window.addEventListener('resize', handleResize);
   
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="btn back-to-top rounded-circle shadow" title="Go to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+  // Close menu when clicking outside on mobile
+  function closeMenuOnClickOutside(event) {
+    if (!mobileSidebar || !mobileMenuToggler) return;
+    
+    const isClickInsideMenu = mobileSidebar.contains(event.target);
+    const isClickOnToggler = mobileMenuToggler.contains(event.target) || 
+                            (mobileMenuToggler === event.target);
+    
+    if (mobileSidebar.classList.contains('show') && !isClickInsideMenu && !isClickOnToggler) {
+      toggleMobileMenu();
+    }
+  }
   
-  <script>
+  document.addEventListener('click', closeMenuOnClickOutside);
+});
+</script>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="btn back-to-top rounded-circle shadow" title="Go to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
     // Back to Top
     const backBtn = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {

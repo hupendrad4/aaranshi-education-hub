@@ -1,0 +1,47 @@
+2025-11-14 23:13:23 [32minfo[39m: Server running on port 3002
+2025-11-14 23:13:23 [32minfo[39m: Environment: development
+{"code":"EAUTH","command":"AUTH PLAIN","level":"error","message":"SMTP connection error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-7b924aeda22sm5854210b3a.2 - gsmtp","response":"535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-7b924aeda22sm5854210b3a.2 - gsmtp","responseCode":535,"stack":"Error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-7b924aeda22sm5854210b3a.2 - gsmtp\n    at SMTPConnection._formatError (/home/aumni/Hupendra/Hupendra Work/aaranshi-education-hub/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)\n    at SMTPConnection._actionAUTHComplete (/home/aumni/Hupendra/Hupendra Work/aaranshi-education-hub/node_modules/nodemailer/lib/smtp-connection/index.js:1588:34)\n    at SMTPConnection.<anonymous> (/home/aumni/Hupendra/Hupendra Work/aaranshi-education-hub/node_modules/nodemailer/lib/smtp-connection/index.js:556:26)\n    at SMTPConnection._processResponse (/home/aumni/Hupendra/Hupendra Work/aaranshi-education-hub/node_modules/nodemailer/lib/smtp-connection/index.js:993:20)\n    at SMTPConnection._onData (/home/aumni/Hupendra/Hupendra Work/aaranshi-education-hub/node_modules/nodemailer/lib/smtp-connection/index.js:774:14)\n    at SMTPConnection._onSocketData (/home/aumni/Hupendra/Hupendra Work/aaranshi-education-hub/node_modules/nodemailer/lib/smtp-connection/index.js:195:44)\n    at TLSSocket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)","timestamp":"2025-11-14 23:13:25"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:15:37"}
+2025-11-14 23:15:37 [32minfo[39m: Server running on port 3002
+2025-11-14 23:15:37 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:15:37"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:15:37"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:16:00"}
+2025-11-14 23:16:00 [32minfo[39m: Server running on port 3002
+2025-11-14 23:16:00 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:16:00"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:16:01"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:16:11"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:17:38"}
+2025-11-14 23:17:38 [32minfo[39m: Server running on port 3002
+2025-11-14 23:17:38 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:17:38"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:17:38"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:17:38"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:18:19"}
+2025-11-14 23:18:19 [32minfo[39m: Server running on port 3002
+2025-11-14 23:18:19 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:18:52"}
+2025-11-14 23:18:52 [32minfo[39m: Server running on port 3002
+2025-11-14 23:18:52 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:18:52"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:18:53"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:18:53"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:18:53"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-14 23:19:08"}
+2025-11-14 23:19:08 [32minfo[39m: Server running on port 3002
+2025-11-14 23:19:08 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 00:24:15"}
+2025-11-15 00:24:15 [32minfo[39m: Server running on port 3002
+2025-11-15 00:24:15 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 00:25:34"}
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 00:26:06"}
+2025-11-15 00:26:06 [33mwarn[39m: Email functionality is temporarily disabled for testing
+2025-11-15 00:26:06 [32minfo[39m: Server running on port 3002
+2025-11-15 00:26:06 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 00:26:06"}
+2025-11-15 00:26:06 [33mwarn[39m: Email functionality is temporarily disabled for testing
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 00:29:14"}
+2025-11-15 00:29:14 [33mwarn[39m: Email functionality is temporarily disabled for testing
+2025-11-15 00:29:14 [32minfo[39m: Server running on port 3002
+2025-11-15 00:29:14 [32minfo[39m: Environment: development

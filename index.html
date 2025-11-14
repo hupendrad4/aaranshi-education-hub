@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <div id="header">
+    <!-- Header will be loaded here by JavaScript -->
+  </div>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -15,6 +22,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- jQuery (for header/footer includes) -->
+  <!-- Load Header -->
+  <script>
+    $(function(){
+      $("#header").load("components/header.html");
+    });
+  </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- Page Styles (theme-aligned) -->
@@ -179,30 +192,132 @@
     }
     .btn-ghost:hover{ background:#ffffff1a; }
 
-    .hero-card{
-      background:#ffffff; color: var(--edu-ink);
-      border-radius: 1.25rem; box-shadow: var(--shadow-soft);
-      padding: 1.25rem;
+    .hero-card {
+      background: #ffffff; 
+      color: var(--edu-ink);
+      border-radius: 1.25rem; 
+      box-shadow: var(--shadow-soft);
+      padding: 1.5rem;
+      margin: 0 auto;
+      max-width: 100%;
+      width: 100%;
     }
     .hero-card .line{
       height: 5px; border-radius: 10px;
       background: linear-gradient(90deg, var(--edu-green), #72f1b7);
       margin-bottom: .75rem;
     }
-    .hero-facts{ display:grid; grid-template-columns: repeat(2,1fr); gap: .75rem; }
-    .fact{
-      background: #f1fcff; border: 1px solid #e3f8fb; border-radius: 12px; padding: .75rem .9rem;
-      display:flex; align-items:center; gap:.6rem;
+    .hero-grid { 
+      display: grid;
+      grid-template-areas: 
+        "hero-content"
+        "hero-card"
+        "hero-buttons";
+      gap: 2rem;
+      align-items: start;
     }
-    .fact .icon{
-      width: 38px; height:38px; border-radius: 10px; display:inline-flex; align-items:center; justify-content:center;
-      background: var(--edu-bg); color: var(--edu-navy);
+    
+    @media (min-width: 992px) {
+      .hero-grid {
+        grid-template-areas: 
+          "hero-content hero-card"
+          "hero-buttons hero-card";
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        align-items: center;
+        min-height: 580px;
+      }
+    }
+    
+    .hero-content { grid-area: hero-content; }
+    .hero-card { grid-area: hero-card; }
+    .hero-buttons { grid-area: hero-buttons; }
+    .hero-facts { 
+      display: grid; 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 0.75rem; 
+      width: 100%;
+    }
+    .fact {
+      background: #f8fafb;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      padding: 1rem 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      transition: all 0.3s ease;
+      min-height: 100px;
+    }
+    .fact:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border-color: var(--edu-green);
+    }
+    .fact .icon {
+      width: 36px; 
+      height: 36px; 
+      border-radius: 10px; 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center;
+      background: var(--edu-bg); 
+      color: var(--edu-navy);
+      font-size: 0.9rem;
+      flex-shrink: 0;
     }
 
-    @media (max-width: 991.98px){
-      .hero-grid{ grid-template-columns: 1fr; gap: 20px; min-height: unset; padding: 48px 0; }
-      .hero-card{ order: -1; }
-      .hero-title{ font-size: 2rem; }
+    @media (max-width: 991.98px) {
+      .hero-grid { 
+        padding: 2rem 0;
+        gap: 2.5rem;
+      }
+      .hero-title { 
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .hero-sub {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+      .hero-card {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+    
+    @media (max-width: 767.98px) {
+      .hero-facts {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      .fact {
+        padding: 0.75rem 0.5rem;
+        min-height: 90px;
+      }
+      .fact div {
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 200px) {
+      .hero-facts {
+        grid-template-columns: 1fr;
+      }
+      .fact {
+        flex-direction: row;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        min-height: auto;
+        gap: 1rem;
+      }
+      .fact .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
     }
 
     .section-title{
@@ -294,29 +409,47 @@
       <div class="container py-5">
         <div class="hero-grid">
           <!-- Left: Text -->
-          <div>
-            <h1 class="hero-title display-5">Empowering Future Minds</h1>
-            <p class="hero-sub lead mb-4">
+          <div class="hero-content">
+            <h1 class="hero-title display-5 text-center text-lg-start">Empowering Future Minds</h1>
+            <p class="hero-sub lead mb-4 text-center text-lg-start">
               Join the journey of excellence with Aranshi Education Hub — where dreams meet reality through quality education.
             </p>
-            <div class="hero-buttons d-flex gap-2 flex-wrap">
-              <a href="courses.html" class="btn btn-cta btn-lg"><i class="fa-solid fa-graduation-cap me-2"></i>Explore Courses</a>
-              <a href="about.html" class="btn btn-ghost btn-lg"><i class="fa-regular fa-circle-question me-2"></i>Learn More</a>
-            </div>
           </div>
 
-          <!-- Right: Quick facts card -->
+          <!-- Why Choose Us Card -->
           <aside class="hero-card">
             <div class="line"></div>
-            <h5 class="mb-2" style="color: var(--edu-navy);">Why Students Choose Us</h5>
-            <p class="text-muted mb-3">Structured learning, caring mentorship, and proven results.</p>
+            <h5 class="mb-3 text-center" style="color: var(--edu-navy); font-weight: 700;">Why Students Choose Us</h5>
+            <p class="text-muted mb-4 text-center">Structured learning, caring mentorship, and proven results.</p>
             <div class="hero-facts">
-              <div class="fact"><span class="icon"><i class="fa-solid fa-user-graduate"></i></span><strong>10k+</strong> students</div>
-              <div class="fact"><span class="icon"><i class="fa-solid fa-star"></i></span><strong>96%</strong> board results</div>
-              <div class="fact"><span class="icon"><i class="fa-solid fa-vial"></i></span><strong>2k+</strong> NEET/JEE</div>
-              <div class="fact"><span class="icon"><i class="fa-solid fa-chalkboard-teacher"></i></span><strong>150+</strong> faculty</div>
+              <div class="fact">
+                <span class="icon"><i class="fa-solid fa-user-graduate"></i></span>
+                <div><strong>10k+</strong> Students</div>
+              </div>
+              <div class="fact">
+                <span class="icon"><i class="fa-solid fa-star"></i></span>
+                <div><strong>96%</strong> Results</div>
+              </div>
+              <div class="fact">
+                <span class="icon"><i class="fa-solid fa-vial"></i></span>
+                <div><strong>2k+</strong> NEET/JEE</div>
+              </div>
+              <div class="fact">
+                <span class="icon"><i class="fa-solid fa-chalkboard-teacher"></i></span>
+                <div><strong>150+</strong> Faculty</div>
+              </div>
             </div>
           </aside>
+          
+          <!-- CTA Buttons -->
+          <div class="hero-buttons d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+            <a href="courses.html" class="btn btn-cta btn-lg px-3">
+              <i class="fa-solid fa-graduation-cap me-2"></i>Explore Courses
+            </a>
+            <a href="about.html" class="btn btn-ghost btn-lg px-3">
+              <i class="fa-regular fa-circle-question me-2"></i>Learn More
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -462,21 +595,94 @@
       </div>
     </section>
 
+ 
+
     <!-- WIDE CTA -->
-    <section class="py-5">
-      <div class="container">
-        <div class="cta-wide text-center">
-          <h3 class="mb-2" style="color: var(--edu-navy);">Ready to Start Your Learning Journey?</h3>
-          <p class="text-muted mb-3">Join thousands of students transforming their future with us.</p>
-          <div class="d-flex gap-2 justify-content-center">
-            <a href="register.html" class="btn btn-accent btn-lg"><i class="fa-regular fa-circle-check me-2"></i>Get Started</a>
-            <a href="contact.html" class="btn btn-outline-primary btn-lg rounded-pill" style="border-color: var(--edu-navy); color: var(--edu-navy);">
-              Contact Us
-            </a>
-          </div>
-        </div>
+<!-- <section class="py-5">
+  <div class="container">
+    <div class="cta-wide text-center">
+      <h3 class="mb-2" style="color: var(--edu-navy);">
+        Ready to Start Your Learning Journey?
+      </h3>
+      <p class="text-muted mb-3">
+        Join thousands of students transforming their future with us.
+      </p>
+
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
+        <a href="register.html" 
+           class="btn btn-accent btn-sm px-4 py-2 d-flex align-items-center justify-content-center">
+          <i class="fa-regular fa-circle-check me-2"></i>Get Started
+        </a>
+
+        <a href="contact.html" 
+           class="btn btn-outline-primary btn-sm rounded-pill px-4 py-2 d-flex align-items-center justify-content-center"
+           style="border-color: var(--edu-navy); color: var(--edu-navy);">
+          Contact Us
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- WIDE CTA -->
+<section class="py-5">
+  <div class="container">
+    <div class="cta-wide text-center">
+      <h3 class="mb-2" style="color: var(--edu-navy);">
+        Ready to Start Your Learning Journey?
+      </h3>
+      <p class="text-muted mb-4">
+        Join thousands of students transforming their future with us.
+      </p>
+
+      <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 16px;">
+        <a href="register.html"
+           class="btn btn-accent btn-sm px-4 py-2 d-flex align-items-center justify-content-center cta-btn">
+          <i class="fa-regular fa-circle-check me-2"></i>Get Started
+        </a>
+
+        <a href="contact.html"
+           class="btn btn-outline-primary btn-sm rounded-pill px-4 py-2 d-flex align-items-center justify-content-center cta-btn"
+           style="border-color: var(--edu-navy); color: var(--edu-navy);">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add this CSS -->
+<style>
+  .cta-btn {
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-accent:hover {
+    background-color: var(--edu-navy);
+    color: #fff !important;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: var(--edu-navy);
+    color: #fff !important;
+    border-color: var(--edu-navy);
+  }
+
+  @media (max-width: 250px) {
+    .cta-btn {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+</style>
+
 
     <!-- NEWSLETTER -->
     <section class="pb-5">
@@ -547,4 +753,3 @@
     });
   </script>
 </body>
-</html>

@@ -46,8 +46,48 @@ if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir);
 }
 
+// Configure CSP
+const cspConfig = {
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: [
+      "'self'",
+      'https://code.jquery.com',
+      'https://cdn.jsdelivr.net',
+      'https://cdnjs.cloudflare.com',
+      "'unsafe-inline'"
+    ],
+    styleSrc: [
+      "'self'",
+      'https://cdn.jsdelivr.net',
+      'https://cdnjs.cloudflare.com',
+      'https://fonts.googleapis.com',
+      "'unsafe-inline'"
+    ],
+    imgSrc: [
+      "'self'",
+      'data:',
+      'https://images.unsplash.com',
+      'https://*.unsplash.com'
+    ],
+    fontSrc: [
+      "'self'",
+      'https://cdn.jsdelivr.net',
+      'https://cdnjs.cloudflare.com',
+      'https://fonts.gstatic.com',
+      'data:'
+    ],
+    connectSrc: [
+      "'self'",
+      `http://localhost:${process.env.PORT || 3002}`
+    ]
+  }
+};
+
 // Middleware
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: cspConfig
+}));
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   optionsSuccessStatus: 200
@@ -56,8 +96,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../../dist')));
+// Serve static files from the root directory (HTML, CSS, JS, assets)
+app.use(express.static(path.join(__dirname, '..')));
+
+// Serve register.html directly
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, '../register.html'));
+});
 
 // API Routes
 app.use('/api/register', registrationRoutes);
@@ -67,10 +112,6 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../dist/index.html'));
-});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -83,6 +124,8 @@ app.use((err, req, res, next) => {
     }
   });
 });
+
+logger.warn('Email functionality is temporarily disabled for testing');
 
 // Start server
 const PORT = process.env.PORT || 3001;

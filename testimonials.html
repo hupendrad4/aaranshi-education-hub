@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <div id="header">
+    <!-- Header will be loaded here by JavaScript -->
+  </div>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,6 +22,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- jQuery (for optional header/footer includes below) -->
+  <!-- Load Header -->
+  <script>
+    $(function(){
+      $("#header").load("components/header.html");
+    });
+  </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- Theme styles -->
@@ -357,4 +370,3 @@
     });
   </script>
 </body>
-</html>
