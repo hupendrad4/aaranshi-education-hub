@@ -1,0 +1,76 @@
+/* Top Bar Styles */
+.topbar {
+  background-color: var(--color-light);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 0;
+}
+
+.topbar a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.topbar a:hover {
+  color: var(--color-primary);
+}
+
+.topbar .kicker {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.topbar .kicker i {
+  margin-right: 0.5rem;
+  color: var(--color-accent);
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(0, 75, 99, 0.1);
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Ensure the top bar is visible on all pages */
+body {
+  padding-top: 40px; /* Adjust based on your header height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .topbar {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  
+  .topbar .d-flex {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .topbar .text-muted {
+    display: none;
+  }
+  
+  .social-links {
+    justify-content: center !important;
+    margin-top: 0.5rem;
+  }
+}

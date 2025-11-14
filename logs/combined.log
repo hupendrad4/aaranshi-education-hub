@@ -45,3 +45,27 @@
 2025-11-15 00:29:14 [33mwarn[39m: Email functionality is temporarily disabled for testing
 2025-11-15 00:29:14 [32minfo[39m: Server running on port 3002
 2025-11-15 00:29:14 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 00:54:32"}
+2025-11-15 00:54:32 [33mwarn[39m: Email functionality is temporarily disabled for testing
+2025-11-15 00:54:32 [32minfo[39m: Server running on port 3002
+2025-11-15 00:54:32 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 00:58:26"}
+2025-11-15 00:58:26 [33mwarn[39m: Email functionality is temporarily disabled for testing
+2025-11-15 00:58:26 [32minfo[39m: Server running on port 3002
+2025-11-15 00:58:26 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 01:02:18"}
+2025-11-15 01:02:18 [33mwarn[39m: Email functionality is temporarily disabled for testing
+2025-11-15 01:02:18 [32minfo[39m: Server running on port 3002
+2025-11-15 01:02:18 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 01:03:44"}
+2025-11-15 01:03:44 [33mwarn[39m: Email functionality is temporarily disabled for testing
+2025-11-15 01:03:44 [32minfo[39m: Server running on port 3002
+2025-11-15 01:03:44 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 01:04:36"}
+2025-11-15 01:04:36 [33mwarn[39m: Email functionality is temporarily disabled for testing
+2025-11-15 01:04:36 [32minfo[39m: Server running on port 3002
+2025-11-15 01:04:36 [32minfo[39m: Environment: development
+{"level":"warn","message":"SMTP configuration is incomplete. Email notifications will be disabled.","timestamp":"2025-11-15 01:14:50"}
+2025-11-15 01:14:50 [33mwarn[39m: Email functionality is temporarily disabled for testing
+2025-11-15 01:14:50 [32minfo[39m: Server running on port 3002
+2025-11-15 01:14:50 [32minfo[39m: Environment: development
