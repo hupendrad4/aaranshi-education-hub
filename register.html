@@ -1,141 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Student Registration | Aaranshi Education Hub</title>
   <meta name="description" content="Register for Aaranshi Education Hub's coaching classes. Join our expert-led courses for academic excellence.">
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Animate CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  
-  <!-- Theme CSS -->
-  <link rel="stylesheet" href="css/theme.css">
-  
-  <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="css/style.css">
-  
-  <!-- jQuery -->
+
+  <!-- Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- jQuery (single include) -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
+
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
+    /* ===== Theme (matches index) ===== */
+    :root{
+      --edu-bg: #A8E9F0;
+      --edu-navy: #004B63;
+      --edu-green: #22B573;
+      --edu-ink: #0a2f3d;
+      --edu-muted: #5c7d88;
+      --shadow-soft: 0 10px 25px rgba(0,0,0,.07);
+      --transition: all .25s ease;
+    }
+    html,body{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--edu-ink);
+      background: #f7fbfc;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
-    
-    .registration-container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 15px;
+
+    /* Loader (same behavior as index) */
+    .loading{
+      position: fixed; inset: 0; background: rgba(255,255,255,.9);
+      display: none; place-items: center; z-index: 2000;
+    }
+    .loading.show{ display: grid; }
+    .spinner{
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 4px solid var(--edu-bg);
+      border-top-color: var(--edu-navy);
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg) } }
+
+    /* Back to top (same as index) */
+    .back-to-top{
+      position: fixed; right: 18px; bottom: 18px;
+      width: 44px; height: 44px; border-radius: 50%;
+      display:flex; align-items:center; justify-content:center;
+      background: var(--edu-green); color:#fff; border: 0;
+      box-shadow: 0 12px 22px rgba(34,181,115,.35);
+      z-index: 1050; opacity:0; visibility:hidden; transform: translateY(10px);
+      transition: var(--transition);
+    }
+    .back-to-top.show{ opacity:1; visibility:visible; transform: translateY(0); }
+
+    /* Page container */
+    .registration-wrap{
       flex: 1;
+      padding: 2.5rem 0;
     }
-    
-    .card {
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-      margin-bottom: 2rem;
+
+    /* Card styling (aligned with index look) */
+    .reg-card{
+      border:0; border-radius: 1.25rem; background:#fff; box-shadow: var(--shadow-soft);
+      overflow: hidden;
     }
-    
-    .card-header {
-      background: linear-gradient(135deg, #004B63 0%, #22B573 100%);
-      color: white;
-      border-radius: 10px 10px 0 0 !important;
-      padding: 1.5rem;
+    .reg-card .card-header{
+      background: linear-gradient(135deg, var(--edu-navy), var(--edu-green));
+      color:#fff; border:0; padding: 1.5rem 1.25rem;
     }
-    
-    .form-section {
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+    .reg-card .card-header h2{ font-weight: 800; margin: 0 0 .25rem; }
+    .reg-card .card-header p{ margin: 0; opacity: .95; }
+
+    .form-section{
+      background:#fff; border-radius: 12px; border:1px solid #eef4f6;
+      padding: 1.25rem; margin-bottom: 1rem;
     }
-    
-    .form-label {
-      font-weight: 500;
-      color: #495057;
+    .form-label{ font-weight: 600; color: var(--edu-navy); margin-bottom: .45rem; }
+    .form-control, .form-select{
+      border-radius: 12px; border: 2px solid rgba(0,75,99,.15); padding:.6rem .85rem;
+      transition: var(--transition);
     }
-    
-    .btn-primary {
-      background-color: #004B63;
-      border: none;
-      padding: 0.6rem 1.5rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
+    .form-control:focus, .form-select:focus{
+      border-color: var(--edu-bg); box-shadow: 0 0 0 .25rem rgba(168,233,240,.35);
     }
-    
-    .btn-primary:hover {
-      background-color: #003a4d;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Buttons (reuse theme classes from index) */
+    .btn-accent{
+      background: var(--edu-green); color:#fff; border:0; border-radius: 12px; padding:.7rem 1.25rem; font-weight:700;
+      transition: var(--transition);
     }
-    
-    @media (max-width: 768px) {
-      .registration-container {
-        margin: 1rem auto;
-        padding: 0 10px;
-      }
-      
-      .card-header h2 {
-        font-size: 1.5rem;
-      }
-      
-      .form-section {
-        padding: 1rem;
-      }
-      
-      .btn {
-        width: 100%;
-      }
+    .btn-accent:hover{ filter: brightness(.95); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,75,99,.12); }
+    .btn-ghost-navy{
+      background: transparent; color: var(--edu-navy); border:2px solid var(--edu-navy); border-radius: 12px;
+      padding:.7rem 1.25rem; font-weight:700; transition: var(--transition);
+    }
+    .btn-ghost-navy:hover{ background: var(--edu-navy); color:#fff; transform: translateY(-2px); }
+
+    /* Form actions: side-by-side on mobile too */
+    .form-actions{
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px;
+      align-items: center; justify-content: center;
+    }
+    @media (min-width: 576px){
+      .form-actions{ display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+    }
+
+    /* Helper text color */
+    .text-muted{ color: var(--edu-muted) !important; }
+
+    /* Small typography tweaks for mobile */
+    @media (max-width: 576px){
+      .reg-card .card-header h2{ font-size: 1.5rem; }
+      .reg-card .card-header p{ font-size: .95rem; }
     }
   </style>
 </head>
-<body class="bg-light">
-  <!-- Loading Overlay -->
-  <div id="loading" class="position-fixed w-100 h-100 bg-white d-flex justify-content-center align-items-center" style="z-index: 9999;">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading show" id="loading">
+    <div class="spinner" aria-label="Loading"></div>
   </div>
-  
-  <!-- Header -->
-  <div id="header">
-    <!-- Header will be loaded here by JavaScript -->
-  </div>
-  
-  <!-- Main Content -->
-  <main class="py-4">
+
+  <!-- Back to Top -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Header include -->
+  <div id="header"></div>
+
+  <!-- MAIN -->
+  <main class="registration-wrap">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
-          <div class="card">
+          <div class="card reg-card">
             <div class="card-header text-center">
-              <h2 class="mb-2">Student Registration</h2>
-              <p class="mb-0">Join Aaranshi Education Hub for academic excellence</p>
+              <h2 class="mb-1">Student Registration</h2>
+              <p>Join Aaranshi Education Hub for academic excellence</p>
             </div>
-            
-            <div class="card-body p-0">
+            <div class="card-body p-3 p-md-4">
               <form id="registrationForm" class="needs-validation" novalidate>
-                <!-- Student Details Section -->
+                
+                <!-- Student Details -->
                 <div class="form-section">
-                  <h5 class="mb-4 text-primary"><i class="fas fa-user-graduate me-2"></i> Student Details</h5>
+                  <h5 class="mb-3" style="color: var(--edu-navy);"><i class="fas fa-user-graduate me-2"></i>Student Details</h5>
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
@@ -154,261 +178,206 @@
                     </div>
                     <div class="col-md-6">
                       <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
-                      <input type="tel" class="form-control" id="phone" required>
-                      <div class="invalid-feedback">Please enter a valid phone number.</div>
+                      <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
+                      <div class="invalid-feedback">Please enter a 10-digit phone number.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="dob" class="form-label">Date of Birth</label>
+                      <input type="date" class="form-control" id="dob">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="city" class="form-label">City</label>
+                      <input type="text" class="form-control" id="city" placeholder="e.g., Pune">
                     </div>
                   </div>
                 </div>
-                
+
+                <!-- Guardian Details -->
+                <div class="form-section">
+                  <h5 class="mb-3" style="color: var(--edu-navy);"><i class="fas fa-user-shield me-2"></i>Parent / Guardian</h5>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="guardianName" class="form-label">Guardian Name</label>
+                      <input type="text" class="form-control" id="guardianName" placeholder="Parent/Guardian full name">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="guardianPhone" class="form-label">Guardian Phone</label>
+                      <input type="tel" class="form-control" id="guardianPhone" pattern="[0-9]{10}" placeholder="10-digit number">
+                      <div class="invalid-feedback">Please enter a 10-digit phone number.</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="address" class="form-label">Address</label>
+                      <input type="text" class="form-control" id="address" placeholder="Street, Area, Landmark">
+                    </div>
+                  </div>
+                </div>
+
                 <!-- Course Selection -->
                 <div class="form-section">
-                  <h5 class="mb-4 text-primary"><i class="fas fa-book me-2"></i> Course Selection</h5>
+                  <h5 class="mb-3" style="color: var(--edu-navy);"><i class="fas fa-book me-2"></i>Course Selection</h5>
                   <div class="row g-3">
-                    <div class="col-12">
+                    <div class="col-md-6">
                       <label for="course" class="form-label">Select Course <span class="text-danger">*</span></label>
                       <select class="form-select" id="course" required>
                         <option value="" selected disabled>Choose a course...</option>
                         <option value="jee">JEE Main & Advanced</option>
                         <option value="neet">NEET</option>
-                        <option value="foundation">Foundation (8th-10th)</option>
+                        <option value="foundation">Foundation (8th–10th)</option>
                         <option value="olympiad">Olympiad</option>
                       </select>
                       <div class="invalid-feedback">Please select a course.</div>
                     </div>
+                    <div class="col-md-6">
+                      <label for="batch" class="form-label">Preferred Batch</label>
+                      <select class="form-select" id="batch">
+                        <option value="" selected disabled>Select preferred batch</option>
+                        <option value="weekday">Weekday (Mon–Fri)</option>
+                        <option value="weekend">Weekend (Sat–Sun)</option>
+                        <option value="evening">Evening Batch</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="mode" class="form-label">Mode</label>
+                      <select class="form-select" id="mode">
+                        <option value="in-person" selected>In-person</option>
+                        <option value="online">Online</option>
+                        <option value="hybrid">Hybrid</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="startMonth" class="form-label">Tentative Start Month</label>
+                      <input type="month" class="form-control" id="startMonth">
+                    </div>
                   </div>
                 </div>
-                
-                <!-- Submit Button -->
-                <div class="form-section text-center text-md-end">
-                  <button type="submit" class="btn btn-primary px-4">
-                    <span class="spinner-border spinner-border-sm d-none me-2" id="submitSpinner"></span>
-                    Submit Application
-                  </button>
+
+                <!-- Notes -->
+                <div class="form-section">
+                  <h5 class="mb-3" style="color: var(--edu-navy);"><i class="fas fa-note-sticky me-2"></i>Additional Notes</h5>
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label for="notes" class="form-label">Anything we should know?</label>
+                      <textarea id="notes" rows="3" class="form-control" placeholder="Learning goals, constraints, scholarship interest, etc."></textarea>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- Actions (side-by-side) -->
+                <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+                  <small class="text-muted">By submitting, you agree to be contacted by Aaranshi Education Hub.</small>
+                </div>
+                <div class="form-section d-flex justify-content-end">
+                  <div class="form-actions">
+                    <a href="courses.html" class="btn btn-ghost-navy">
+                      <i class="fa-solid fa-arrow-left me-2"></i>Browse Courses
+                    </a>
+                    <button type="submit" class="btn btn-accent">
+                      <span class="spinner-border spinner-border-sm d-none me-2" id="submitSpinner"></span>
+                      Submit Application
+                    </button>
+                  </div>
+                </div>
+
               </form>
             </div>
+          </div>
+
+          <!-- Help CTA -->
+          <div class="text-center mt-4">
+            <a class="btn btn-outline-primary rounded-pill px-4"
+               style="border-color: var(--edu-navy); color: var(--edu-navy);" href="contact.html">
+              Need help? Contact Us
+            </a>
           </div>
         </div>
       </div>
     </div>
   </main>
-  
-  <!-- Footer -->
-  <footer id="footer" class="bg-dark text-white py-4 mt-auto">
-    <!-- Footer content will be loaded here -->
-  </footer>
 
-  <!-- Load Header and Footer -->
-  <script>
-    // Load header and footer
-    $(document).ready(function() {
-      // Load header
-      $("#header").load("components/header.html", function() {
-        // Initialize mobile menu after header is loaded
-        const mobileMenuToggler = document.getElementById('mobileMenuToggler');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const closeMenuBtn = document.getElementById('closeMenu');
-
-        if (mobileMenuToggler && mobileMenu && mobileMenuOverlay) {
-          // Toggle mobile menu
-          mobileMenuToggler.addEventListener('click', function() {
-            mobileMenu.classList.add('show');
-            mobileMenuOverlay.classList.add('show');
-            document.body.style.overflow = 'hidden';
-          });
-
-          // Close menu when clicking overlay
-          mobileMenuOverlay.addEventListener('click', function() {
-            mobileMenu.classList.remove('show');
-            mobileMenuOverlay.classList.remove('show');
-            document.body.style.overflow = '';
-          });
-
-          // Close menu when clicking close button
-          if (closeMenuBtn) {
-            closeMenuBtn.addEventListener('click', function() {
-              mobileMenu.classList.remove('show');
-              mobileMenuOverlay.classList.remove('show');
-              document.body.style.overflow = '';
-            });
-          }
-
-          // Close menu when clicking on a nav link
-          document.querySelectorAll('.mobile-menu-content .nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-              mobileMenu.classList.remove('show');
-              mobileMenuOverlay.classList.remove('show');
-              document.body.style.overflow = '';
-            });
-          });
-        }
-      });
-
-      // Load footer
-      $("#footer").load("components/footer.html");
-      
-      // Hide loading overlay when everything is loaded
-      $(window).on('load', function() {
-        setTimeout(function() {
-          $('#loading').fadeOut('slow');
-        }, 500);
-      });
-    });
-  </script>
-  
-  <!-- Loading Screen -->
-  <div class="loading" id="loading">
-    <div class="spinner" aria-label="Loading"></div>
-  </div>
-
-  <!-- Back to Top Button -->
-  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <!-- Header -->
-  <div id="header"></div>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <!-- Page-specific content will be inserted here -->
-    <div id="content">
-      <!-- Content will be loaded here -->
-    <!-- Page-specific content will be inserted here -->
-    <div id="content">
-      <!-- Content will be loaded here -->
-
-    </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
+  <!-- Footer include -->
   <div id="footer"></div>
 
-  <!-- Bootstrap JS Bundle with Popper -->
+  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- WOW.js for animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-
-  <!-- Custom JavaScript -->
   <script>
-    // Initialize WOW.js
-    if (typeof WOW === 'function') { 
-      new WOW().init(); 
-    }
+    // Robust loader hide (same pattern as index)
+    (function(){
+      const hideLoader = () => {
+        const el = document.getElementById('loading');
+        if (el) el.classList.remove('show');
+      };
+      document.addEventListener('DOMContentLoaded', hideLoader);
+      window.addEventListener('load', hideLoader);
+      setTimeout(hideLoader, 3000); // failsafe
+    })();
 
-    // Hide loader when page is fully loaded
-    window.addEventListener('load', function() {
-      document.getElementById('loading').classList.remove('show');
-      document.body.classList.add('loaded');
-    });
-
-    // Back to top button
-    const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', function() {
-      if (window.pageYOffset > 300) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
-    });
-
-    backToTop.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    // Back to top (same as index)
+    (function(){
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
       });
-    });
+      backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
 
-    // Load header and footer
-    $(function() {
+    // Header & Footer includes + active nav state
+    $(function(){
       $("#header").load("components/header.html", function() {
-        // Update active nav item based on current page
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        $('.nav-link').each(function() {
-          const linkPage = $(this).attr('href').split('/').pop();
-          if (currentPage === linkPage) {
-            $(this).addClass('active');
-          }
+        // mark 'Register' as active
+        $('.nav-link').each(function(){
+          const href = ($(this).attr('href')||'').split('/').pop();
+          if (href === 'register.html') $(this).addClass('active');
         });
       });
-      
-      $("#footer").load("components/footer.html", function() {
-        // Update copyright year
+      $("#footer").load("components/footer.html", function(){
         const year = new Date().getFullYear();
         $('.current-year').text(year);
       });
     });
-  </script>
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    // Load header
-    $(function(){
-      $("#header").load("components/header.html");
-    });
-  </script>
-  
-  <!-- Bootstrap JS Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Custom JS -->
-  <script>
-    // Wait for the DOM to be fully loaded
-    $(document).ready(function() {
-      // Hide loading overlay
-      setTimeout(function() {
-        $('#loading').fadeOut();
-      }, 500);
-      
-      // Form validation
+
+    // Simple client-side validation + fake submit
+    (function(){
       const form = document.getElementById('registrationForm');
-      
-      form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        if (form.checkValidity()) {
-          // Show loading spinner
+      const spinner = document.getElementById('submitSpinner');
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (form.checkValidity()){
           const submitBtn = form.querySelector('button[type="submit"]');
-          const spinner = document.getElementById('submitSpinner');
           submitBtn.disabled = true;
           spinner.classList.remove('d-none');
-          
-          // Simulate form submission
-          setTimeout(function() {
-            // Reset form
+
+          // Simulate network
+          setTimeout(() => {
+            // success UI
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success alert-dismissible fade show';
+            alert.innerHTML = `
+              <i class="fas fa-check-circle me-2"></i>
+              Registration successful! We will contact you soon.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            form.prepend(alert);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // reset form
             form.reset();
             form.classList.remove('was-validated');
             submitBtn.disabled = false;
             spinner.classList.add('d-none');
-            
-            // Show success message
-            const successAlert = `
-              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="fas fa-check-circle me-2"></i>
-                Registration successful! We will contact you soon.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>`;
-              
-            $('.registration-container').prepend(successAlert);
-            
-            // Scroll to top to show success message
-            $('html, body').animate({
-              scrollTop: 0
-            }, 500);
-          }, 1500);
+          }, 1200);
         }
-        
+
         form.classList.add('was-validated');
-      }, false);
-      
-      // Load header and footer
-      $('#header').load('components/header.html');
-      $('#footer').load('components/footer.html');
-    });
+      });
+    })();
   </script>
 </body>
+</html>
