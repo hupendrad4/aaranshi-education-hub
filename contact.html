@@ -1,11 +1,4 @@
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-  <!-- Header -->
-  <div id="header">
-    <!-- Header will be loaded here by JavaScript -->
-  </div>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -24,13 +17,13 @@
   <!-- Animate CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-  <!-- jQuery (for header/footer includes) -->
-  <!-- Load Header -->
-  <script>
-    $(function(){
-      $("#header").load("components/header.html");
-    });
-  </script>
+  <!-- Header CSS -->
+  <link rel="stylesheet" href="css/header.css">
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="css/global.css">
+
+  <!-- jQuery (single include) -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- Page Styles (same theme as testimonials) -->
@@ -98,6 +91,10 @@
         linear-gradient(180deg, rgba(0,75,99,.65), rgba(0,75,99,.35)),
         radial-gradient(80rem 40rem at 60% -10%, rgba(168,233,240,.45), transparent 60%);
       mix-blend-mode: multiply;
+    }
+    .hero h1 {
+      color: #ffffff !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     .kicker{
       background: rgba(168,233,240,.25);

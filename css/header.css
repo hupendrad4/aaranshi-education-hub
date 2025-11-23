@@ -1,34 +1,129 @@
+/* CSS Variables for Header */
+:root {
+  --edu-bg: #A8E9F0;
+  --edu-navy: #004B63;
+  --edu-green: #22B573;
+  --edu-ink: #0a2f3d;
+  --edu-muted: #5c7d88;
+  --transition: all .25s ease;
+}
+
+/* Prevent scroll when sidebar open */
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* Top Bar Styles */
 .topbar {
-  background-color: var(--color-light);
+  background-color: #ffffff;
   font-size: 0.85rem;
-  color: var(--color-text);
+  color: var(--edu-ink);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   padding: 0.5rem 0;
 }
 
 .topbar a {
-  color: var(--color-text);
+  color: var(--edu-ink);
   text-decoration: none;
   transition: var(--transition);
+  font-size: 0.75rem;
+  white-space: nowrap;
 }
 
 .topbar a:hover {
-  color: var(--color-primary);
+  color: var(--edu-green);
 }
 
 .topbar .kicker {
-  color: var(--color-primary);
+  color: var(--edu-navy);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   display: inline-flex;
   align-items: center;
+  white-space: nowrap;
 }
 
 .topbar .kicker i {
-  margin-right: 0.5rem;
-  color: var(--color-accent);
+  margin-right: 0.25rem;
+  color: var(--edu-green);
+  font-size: 0.65rem;
 }
+
+.topbar .fas {
+  font-size: 0.7rem;
+}
+
+/* Ensure all items stay on one line */
+.topbar span {
+  white-space: nowrap;
+}
+
+/* Tablet adjustments */
+@media (max-width: 991.98px) {
+  .topbar {
+    padding: 0.25rem 0;
+  }
+
+  .topbar .kicker {
+    font-size: 0.65rem;
+  }
+
+  .topbar a {
+    font-size: 0.7rem;
+  }
+
+  .topbar .fas {
+    font-size: 0.65rem;
+  }
+}
+
+/* Mobile adjustments - COMPACT for one line */
+@media (max-width: 500.98px) {
+  .topbar {
+    font-size: 0.65rem;
+    padding: 0.25rem 0;
+  }
+
+  .topbar .kicker {
+    font-size: 0.6rem;
+  }
+
+  .topbar a {
+    font-size: 0.6rem;
+  }
+
+  .topbar .fas {
+    font-size: 0.55rem;
+  }
+
+  .topbar .kicker i {
+    margin-right: 0.15rem;
+  }
+}
+
+/* Extra small screens - EXTRA COMPACT */
+@media (max-width: 576px) {
+  .topbar {
+    font-size: 0.6rem;
+    padding: 0.2rem 0;
+  }
+
+  .topbar .kicker {
+    font-size: 0.55rem;
+  }
+
+  .topbar a {
+    font-size: 0.55rem;
+  }
+
+  .topbar .fas {
+    font-size: 0.5rem;
+  }
+
+  .topbar .kicker i {
+    font-size: 0.5rem;
+    margin-right: 0.1rem;
+  }
 
 .social-links a {
   display: inline-flex;
@@ -38,23 +133,203 @@
   height: 28px;
   border-radius: 50%;
   background-color: rgba(0, 75, 99, 0.1);
-  color: var(--color-primary);
+  color: var(--edu-navy);
   transition: var(--transition);
 }
 
 .social-links a:hover {
-  background-color: var(--color-primary);
+  background-color: var(--edu-green);
   color: white;
   transform: translateY(-2px);
 }
 
-/* Ensure the top bar is visible on all pages */
-body {
-  padding-top: 40px; /* Adjust based on your header height */
+/* Navbar Styles */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--edu-ink) !important;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--edu-green) !important;
+}
+
+.nav-link.active {
+  color: var(--edu-green) !important;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: var(--edu-green);
+  border-radius: 3px;
+}
+
+.btn-join {
+  background: var(--edu-green);
+  color: white;
+  border: 0;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  transition: var(--transition);
+}
+
+.btn-join:hover {
+  background: var(--edu-navy);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 181, 115, 0.3);
+}
+
+/* MOBILE SIDEBAR STYLES - Wireframe Design */
+.mobile-sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1040;
+}
+
+.mobile-sidebar-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  max-width: 85vw;
+  background: white;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.mobile-sidebar.show {
+  transform: translateX(0);
+}
+
+.mobile-sidebar-header .btn-close-sidebar {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--edu-navy);
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.mobile-sidebar-header .btn-close-sidebar:hover {
+  background: #f0f0f0;
+}
+
+.mobile-sidebar-brand {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.mobile-contact-section {
+  background: #f8f9fa;
+}
+
+.mobile-contact-section a,
+.mobile-bottom-contact a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--edu-ink);
+}
+
+.mobile-sidebar .navbar-nav {
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mobile-sidebar .nav-item {
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0;
+}
+
+.mobile-sidebar .nav-link {
+  font-size: 1.05rem !important;
+  color: var(--edu-ink) !important;
+  padding: 1rem 0.75rem !important;
+  border-left: 3px solid transparent;
+  transition: var(--transition);
+  display: block;
+  font-weight: 500;
+}
+
+.mobile-sidebar .nav-link:hover,
+.mobile-sidebar .nav-link.active {
+  color: var(--edu-green) !important;
+  border-left-color: var(--edu-green);
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+.mobile-bottom-contact {
+  background: white;
+  margin-top: auto;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+/* Navbar toggler */
+.navbar-toggler {
+  border: 2px solid var(--edu-navy);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 75, 99, 0.25);
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23004B63' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* Responsive adjustments */
-@media (max-width: 767.98px) {
+@media (max-width: 500.98px) {
   .topbar {
     text-align: center;
     padding: 0.5rem 0;
@@ -62,7 +337,7 @@ body {
   
   .topbar .d-flex {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1 rem;
   }
   
   .topbar .text-muted {
@@ -72,5 +347,33 @@ body {
   .social-links {
     justify-content: center !important;
     margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .topbar {
+    padding: 0.4rem 0;
+  }
+
+  .topbar .kicker {
+    font-size: 0.75rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .topbar .kicker {
+    font-size: 0.7rem;
+  }
+
+  .mobile-sidebar {
+    width: 280px;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
   }
 }

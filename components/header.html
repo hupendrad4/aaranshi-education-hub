@@ -1,210 +1,208 @@
 <!-- TOP BAR -->
-<div class="topbar py-2">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-      <!-- Left: kicker + contacts -->
-      <div class="d-flex flex-wrap align-items-center gap-3">
-        <span class="kicker d-none d-md-inline-flex">
-          <i class="fa-solid fa-star me-1"></i> Trusted by top scorers
-        </span>
+<div class="topbar py-1 bg-white border-bottom">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+            <!-- Left: kicker + contacts (ALL on ONE line) -->
+            <div class="d-flex align-items-center gap-1 gap-sm-2 gap-md-3" style="flex-wrap: nowrap; white-space: nowrap;">
+                <!-- Kicker visible on all devices -->
+                <span class="kicker d-inline-flex align-items-center">
+                    <i class="fa-solid fa-star me-1"></i> Trusted by top scorers
+                </span>
 
-        <span class="d-flex align-items-center">
-          <i class="fas fa-phone-alt me-2"></i>
-          <a href="tel:+919876543210" class="text-decoration-none">+91 98765 43210</a>
-        </span>
+                <!-- Phone -->
+                <span class="d-flex align-items-center">
+                    <i class="fas fa-phone-alt me-1"></i>
+                    <a href="tel:+919876543210" class="text-decoration-none">+91 98765 43210</a>
+                </span>
 
-        <span class="d-flex align-items-center">
-          <i class="fas fa-envelope me-2"></i>
-          <a href="mailto:info@aranshieduhub.com" class="text-decoration-none">info@aranshieduhub.com</a>
-        </span>
-      </div>
+                <!-- Email -->
+                <span class="d-flex align-items-center">
+                    <i class="fas fa-envelope me-1"></i>
+                    <a href="mailto:info@aranshieduhub.com" class="text-decoration-none">info@aranshieduhub.com</a>
+                </span>
+            </div>
 
-      <!-- Right: social -->
-      <div class="social-links d-flex align-items-center gap-2">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
+            <!-- Right: social (desktop only) -->
+            <div class="social-links d-none d-md-flex align-items-center gap-2" style="flex-shrink: 0;">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-  <div class="container">
-    <a class="navbar-brand fw-bold fs-4" href="index.html">
-      <span style="color: var(--edu-navy);">Aranshi</span>
-      <span style="color: var(--edu-green);">Education Hub</span>
-    </a>
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-4" href="index.html">
+            <span style="color: var(--edu-navy);">Aranshi</span>
+            <span style="color: var(--edu-green);">Education Hub</span>
+        </a>
 
-    <!-- Mobile Toggler -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu"
-            aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <!-- Mobile Toggler (custom, no Bootstrap collapse) -->
+        <button
+                class="navbar-toggler d-lg-none"
+                type="button"
+                id="mobileMenuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="mobileSidebar"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- Desktop Menu -->
-    <div class="d-none d-lg-flex align-items-center ms-auto">
-      <ul class="navbar-nav align-items-lg-center">
-        <li class="nav-item"><a class="nav-link px-3" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="about.html">About Us</a></li>
+        <!-- Desktop Menu -->
+        <div class="d-none d-lg-flex align-items-center ms-auto">
+            <ul class="navbar-nav align-items-lg-center">
+                <li class="nav-item"><a class="nav-link px-3" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="about.html">About Us</a></li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle px-3" href="#" id="coursesDropdown" role="button"
-             data-bs-toggle="dropdown" aria-expanded="false">Courses</a>
-          <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
-            <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
-            <li><a class="dropdown-item" href="#">Science Stream</a></li>
-            <li><a class="dropdown-item" href="#">Commerce Stream</a></li>
-            <li><a class="dropdown-item" href="#">Competitive Exams</a></li>
-          </ul>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-3" href="#" id="coursesDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">Courses</a>
+                    <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+                        <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
+                        <li><a class="dropdown-item" href="#">Science Stream</a></li>
+                        <li><a class="dropdown-item" href="#">Commerce Stream</a></li>
+                        <li><a class="dropdown-item" href="#">Competitive Exams</a></li>
+                    </ul>
+                </li>
 
-        <li class="nav-item"><a class="nav-link px-3" href="teachers.html">Teachers</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="events.html">Events</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="testimonials.html">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="contact.html">Contact</a></li>
-      </ul>
-
-      <a href="register.html" class="btn btn-join ms-3">Register Now</a>
-    </div>
-
-    <!-- Mobile Menu (collapsed) -->
-    <div class="collapse navbar-collapse mt-2 mt-lg-0" id="mobileMenu">
-      <div class="d-lg-none w-100">
-        <!-- Mobile trusted badge -->
-        <div class="d-flex align-items-center mb-3 p-2 bg-light rounded">
-          <i class="fas fa-star text-warning me-2"></i>
-          <span class="fw-medium">Trusted by top scorers</span>
-        </div>
-
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link py-2" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link py-2" href="about.html">About Us</a></li>
-
-          <!-- Collapse-friendly dropdown on mobile -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle py-2" href="#" id="mCoursesDropdown" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">Courses</a>
-            <ul class="dropdown-menu" aria-labelledby="mCoursesDropdown">
-              <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
-              <li><a class="dropdown-item" href="#">Science Stream</a></li>
-              <li><a class="dropdown-item" href="#">Commerce Stream</a></li>
-              <li><a class="dropdown-item" href="#">Competitive Exams</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="teachers.html">Teachers</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="events.html">Events</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="testimonials.html">Testimonials</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="contact.html">Contact</a></li>
             </ul>
-          </li>
 
-          <li class="nav-item"><a class="nav-link py-2" href="teachers.html">Teachers</a></li>
-          <li class="nav-item"><a class="nav-link py-2" href="events.html">Events</a></li>
-          <li class="nav-item"><a class="nav-link py-2" href="testimonials.html">Testimonials</a></li>
-          <li class="nav-item"><a class="nav-link py-2" href="contact.html">Contact</a></li>
-
-          <li class="nav-item mt-3">
-            <a href="register.html" class="btn btn-join w-100">Register Now</a>
-          </li>
-        </ul>
-
-        <!-- Contact + Social (Mobile) -->
-        <div class="mt-4 pt-3 border-top">
-          <div class="d-flex align-items-center mb-2">
-            <i class="fas fa-phone-alt me-2 text-muted"></i>
-            <a href="tel:+919876543210" class="text-decoration-none">+91 98765 43210</a>
-          </div>
-          <div class="d-flex align-items-center mb-3">
-            <i class="fas fa-envelope me-2 text-muted"></i>
-            <a href="mailto:info@aranshieduhub.com" class="text-decoration-none">info@aranshieduhub.com</a>
-          </div>
-          <div class="d-flex gap-3 pt-2 border-top">
-            <a href="#" class="text-muted" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-muted" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-muted" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-muted" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          </div>
+            <a href="register.html" class="btn btn-join ms-3">Register Now</a>
         </div>
-      </div>
     </div>
-  </div>
 </nav>
 
-<style>
-  :root {
-    --edu-bg: #A8E9F0;
-    --edu-navy: #004B63;
-    --edu-green: #22B573;
-    --edu-muted: #5c7d88;
-    --shadow-soft: 0 10px 25px rgba(0,0,0,.07);
-    --transition: all .3s ease;
-  }
+<!-- MOBILE SIDEBAR + BACKDROP -->
+<div class="mobile-sidebar-backdrop d-lg-none" id="sidebarBackdrop"></div>
 
-  /* Top Bar */
-  .topbar { background: var(--edu-bg); color: var(--edu-navy); font-weight: 500; font-size: .9rem; border-bottom: 1px solid rgba(0,0,0,.06); }
-  .topbar a { color: var(--edu-navy); opacity: .9; transition: var(--transition); }
-  .topbar a:hover { opacity: 1; color: var(--edu-green); text-decoration: none; }
+<aside class="mobile-sidebar d-lg-none" id="mobileSidebar" aria-hidden="true">
+    <!-- Mobile Header Section with Brand and Close -->
+    <div class="mobile-sidebar-header">
+        <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
+            <div class="mobile-sidebar-brand">
+                <div style="font-size: 1.25rem;">
+                    <span class="fw-bold" style="color: var(--edu-navy);">Aranshi</span><br>
+                    <span style="color: var(--edu-navy); font-size: 0.9rem;">Education Hub</span>
+                </div>
+            </div>
+            <button class="btn-close-sidebar" id="sidebarClose" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
 
-  .kicker {
-    background: rgba(168,233,240,.25);
-    border: 1px solid rgba(0,0,0,.08);
-    color: #0b4b5e;
-    display: inline-flex;
-    gap: .4rem;
-    align-items: center;
-    padding: .25rem .6rem;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 0.75rem;
-    white-space: nowrap;
-  }
+    <!-- Contact Info Section -->
+    <div class="mobile-contact-section p-3 bg-light border-bottom">
+        <div class="d-flex align-items-center mb-2">
+            <i class="fas fa-phone-alt me-2" style="color: var(--edu-navy);"></i>
+            <a href="tel:+919876543210" class="text-decoration-none" style="color: var(--edu-ink);">+91 98765 43210</a>
+        </div>
+        <div class="d-flex align-items-center">
+            <i class="fas fa-envelope me-2" style="color: var(--edu-navy);"></i>
+            <a href="mailto:info@aranshieduhub.com" class="text-decoration-none" style="color: var(--edu-ink);">info@aranshieduhub.com</a>
+        </div>
+    </div>
 
-  .social-links a {
-    color: var(--edu-navy);
-    font-size: .95rem;
-    transition: var(--transition);
-    opacity: .9;
-    width: 28px; height: 28px;
-    display: inline-flex; align-items: center; justify-content: center;
-    border-radius: 50%; background: rgba(255,255,255,.3);
-  }
-  .social-links a:hover { color: #fff; background: var(--edu-green); transform: translateY(-2px); }
+    <!-- Navigation Menu -->
+    <ul class="navbar-nav p-3">
+        <li class="nav-item"><a class="nav-link py-3 fw-500" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link py-3 fw-500" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link py-3 fw-500" href="courses.html">Courses</a></li>
+        <li class="nav-item"><a class="nav-link py-3 fw-500" href="teachers.html">Teachers</a></li>
+        <li class="nav-item"><a class="nav-link py-3 fw-500" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link py-3 fw-500" href="testimonials.html">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link py-3 fw-500" href="contact.html">Contact</a></li>
+    </ul>
 
-  /* Navbar */
-  .nav-link { color: var(--edu-navy); font-weight: 500; position: relative; }
-  .nav-link:hover, .nav-link.active { color: var(--edu-green) !important; }
-  .nav-link::after {
-    content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 50%;
-    background-color: var(--edu-green); transform: translateX(-50%); transition: var(--transition);
-  }
-  .nav-link:hover::after, .nav-link.active::after { width: 70%; }
-
-  .dropdown-menu { border: none; border-radius: 8px; box-shadow: var(--shadow-soft); padding: .5rem 0; }
-  .dropdown-item { padding: .6rem 1.25rem; color: var(--edu-navy); }
-  .dropdown-item:hover { background: var(--edu-bg); color: var(--edu-navy); }
-
-  .btn-join {
-    border: 2px solid var(--edu-green);
-    color: var(--edu-green);
-    font-weight: 600;
-    border-radius: 999px;
-    padding: .5rem 1.2rem;
-    transition: var(--transition);
-  }
-  .btn-join:hover { background: var(--edu-green); color: #fff; }
-
-  /* Mobile adjustments */
-  @media (max-width: 991.98px) {
-    .navbar-collapse { background: #fff; border-radius: 10px; padding: 1rem; box-shadow: var(--shadow-soft); }
-    .nav-item { margin: .2rem 0; }
-    .nav-link { padding: .6rem 0 !important; }
-  }
-</style>
+    <!-- Bottom Contact Section -->
+    <div class="mobile-bottom-contact p-3 border-top mt-auto">
+        <div class="d-flex align-items-center mb-2">
+            <i class="fas fa-phone-alt me-2" style="color: var(--edu-navy);"></i>
+            <a href="tel:+919876523210" class="text-decoration-none" style="color: var(--edu-ink);">+91 98765 2310</a>
+        </div>
+        <div class="d-flex align-items-center">
+            <i class="fas fa-envelope me-2" style="color: var(--edu-navy);"></i>
+            <a href="mailto:info@aranshieduhub.com" class="text-decoration-none" style="color: var(--edu-ink);">info@aranshieduhub.com</a>
+        </div>
+    </div>
+</aside>
 
 <script>
-  // Optional: set active nav link based on current page
-  document.addEventListener('DOMContentLoaded', function () {
-    const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    document.querySelectorAll('.navbar .nav-link').forEach(link => {
-      const href = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
-      if (href === current) link.classList.add('active');
+    // Active link highlight
+    document.addEventListener('DOMContentLoaded', function () {
+      const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      document.querySelectorAll('.navbar .nav-link, .mobile-sidebar .nav-link').forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
+        if (href === current) link.classList.add('active');
+      });
+
+      // Mobile sidebar logic
+      const toggleBtn = document.getElementById('mobileMenuToggle');
+      const sidebar = document.getElementById('mobileSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+<script>
+    // Active link highlight & Mobile Sidebar functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      document.querySelectorAll('.navbar .nav-link, .mobile-sidebar .nav-link').forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
+        if (href === current) link.classList.add('active');
+      });
+
+      // Mobile sidebar controls
+      const toggleBtn = document.getElementById('mobileMenuToggle');
+      const sidebar = document.getElementById('mobileSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      const closeBtn = document.getElementById('sidebarClose');
+
+      function openSidebar() {
+        sidebar.classList.add('show');
+        backdrop.classList.add('show');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        sidebar.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('no-scroll');
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('show');
+        backdrop.classList.remove('show');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        sidebar.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('no-scroll');
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          if (sidebar.classList.contains('show')) {
+            closeSidebar();
+          } else {
+            openSidebar();
+          }
+        });
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+      // Close sidebar when clicking a link
+      sidebar.querySelectorAll('a.nav-link').forEach(link => {
+        link.addEventListener('click', closeSidebar);
+      });
+
+      // Handle escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('show')) {
+          closeSidebar();
+        }
+      });
     });
-  });
 </script>
