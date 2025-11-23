@@ -29,6 +29,10 @@
       $("#header").load("components/header.html", function() {
         // Header loaded callback
         console.log("Header loaded successfully");
+        // Initialize header functionality after it's loaded
+        if (typeof initializeHeader === 'function') {
+          initializeHeader();
+        }
       });
       $("#footer").load("components/footer.html");
     });

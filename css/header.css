@@ -356,16 +356,16 @@ body.no-scroll {
     text-align: center;
     padding: 0.5rem 0;
   }
-  
+
   .topbar .d-flex {
     flex-direction: column;
     gap: 1 rem;
   }
-  
+
   .topbar .text-muted {
     display: none;
   }
-  
+
   .social-links {
     justify-content: center !important;
     margin-top: 0.5rem;
@@ -399,3 +399,4 @@ body.no-scroll {
     font-size: 1rem;
   }
 }
+

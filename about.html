@@ -445,6 +445,10 @@
           const linkPage = ($(this).attr('href')||'').split('/').pop();
           if (linkPage === current) $(this).addClass('active');
         });
+        // Initialize header functionality
+        if (typeof initializeHeader === 'function') {
+          initializeHeader();
+        }
       });
       $("#footer").load("components/footer.html", function(){
         const year = new Date().getFullYear();
