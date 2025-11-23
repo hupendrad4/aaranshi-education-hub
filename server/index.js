@@ -12,6 +12,9 @@ const { combine, timestamp, printf, colorize, errors } = format;
 // Import routes
 const registrationRoutes = require('./routes/registration');
 
+// Import email service
+const emailService = require('./utils/emailService');
+
 // Initialize express app
 const app = express();
 const server = http.createServer(app);
@@ -125,7 +128,17 @@ app.use((err, req, res, next) => {
   });
 });
 
-logger.warn('Email functionality is temporarily disabled for testing');
+// Initialize email service
+emailService.initialize();
+emailService.verify().then(verified => {
+  if (verified) {
+    logger.info('✓ Email service ready');
+  } else {
+    logger.warn('⚠️  Email service not configured - check EMAIL_USER and EMAIL_PASSWORD in .env');
+  }
+}).catch(err => {
+  logger.error('✗ Email service error:', err.message);
+});
 
 // Start server
 const PORT = process.env.PORT || 3001;

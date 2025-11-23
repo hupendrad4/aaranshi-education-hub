@@ -351,7 +351,7 @@
       const form = document.getElementById('registrationForm');
       const spinner = document.getElementById('submitSpinner');
 
-      form.addEventListener('submit', function(e){
+      form.addEventListener('submit', async function(e){
         e.preventDefault();
         e.stopPropagation();
 
@@ -360,25 +360,91 @@
           submitBtn.disabled = true;
           spinner.classList.remove('d-none');
 
-          // Simulate network
-          setTimeout(() => {
-            // success UI
+          try {
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {
+              firstName: formData.get('firstName'),
+              lastName: formData.get('lastName'),
+              email: formData.get('email'),
+              phone: formData.get('phone'),
+              dob: formData.get('dob'),
+              gender: formData.get('gender'),
+              city: formData.get('city'),
+              guardianName: formData.get('guardianName'),
+              guardianPhone: formData.get('guardianPhone'),
+              address: formData.get('address'),
+              class: formData.get('class'),
+              course: formData.get('course'),
+              previousSchool: formData.get('previousSchool'),
+              previousBoard: formData.get('previousBoard'),
+              percentage: formData.get('percentage'),
+              interests: formData.getAll('interests'),
+              startMonth: formData.get('startMonth'),
+              additionalInfo: formData.get('additionalInfo')
+            };
+
+            // Send to server
+            const response = await fetch('/api/registration', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+              // Success alert
+              const alert = document.createElement('div');
+              alert.className = 'alert alert-success alert-dismissible fade show';
+              alert.innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Registration Successful!</strong><br>
+                ${result.message}<br>
+                <small>You will receive a confirmation email shortly at <strong>${data.email}</strong></small>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              `;
+              form.prepend(alert);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+
+              // Reset form
+              form.reset();
+              form.classList.remove('was-validated');
+            } else {
+              // Error alert
+              const alert = document.createElement('div');
+              alert.className = 'alert alert-danger alert-dismissible fade show';
+              alert.innerHTML = `
+                <i class="fas fa-exclamation-circle me-2"></i>
+                <strong>Submission Failed</strong><br>
+                ${result.message || 'Please try again or contact us directly.'}<br>
+                <small>Phone: +91 98765 43210 | Email: info@aranshieduhub.com</small>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              `;
+              form.prepend(alert);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          } catch (error) {
+            console.error('Registration error:', error);
+
+            // Network error alert
             const alert = document.createElement('div');
-            alert.className = 'alert alert-success alert-dismissible fade show';
+            alert.className = 'alert alert-danger alert-dismissible fade show';
             alert.innerHTML = `
-              <i class="fas fa-check-circle me-2"></i>
-              Registration successful! We will contact you soon.
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              <strong>Connection Error</strong><br>
+              Unable to submit registration. Please check your internet connection or contact us directly.<br>
+              <small>Phone: +91 98765 43210 | Email: info@aranshieduhub.com</small>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             `;
             form.prepend(alert);
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            // reset form
-            form.reset();
-            form.classList.remove('was-validated');
+          } finally {
             submitBtn.disabled = false;
             spinner.classList.add('d-none');
-          }, 1200);
+          }
         }
 
         form.classList.add('was-validated');

@@ -26,13 +26,24 @@
   <!-- Load Header Component -->
   <script>
     $(function(){
-      $("#header").load("components/header.html", function() {
-        // Header loaded callback
-        console.log("Header loaded successfully");
-        // Initialize header functionality after it's loaded
-        if (typeof initializeHeader === 'function') {
-          initializeHeader();
+      $("#header").load("components/header.html", function(response, status, xhr) {
+        console.log("Header load status:", status);
+        if (status === "error") {
+          console.error("Header load failed:", xhr.status, xhr.statusText);
+          return;
         }
+
+        console.log("Header loaded successfully");
+
+        // Wait a bit longer for script to be parsed
+        setTimeout(function() {
+          if (typeof initializeHeader === 'function') {
+            console.log("Calling initializeHeader...");
+            initializeHeader();
+          } else {
+            console.error("initializeHeader function not found!");
+          }
+        }, 200);
       });
       $("#footer").load("components/footer.html");
     });

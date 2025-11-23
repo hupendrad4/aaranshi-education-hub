@@ -439,16 +439,30 @@
 
     // Load header & footer and mark active
     $(function(){
-      $("#header").load("components/header.html", function() {
+      $("#header").load("components/header.html", function(response, status, xhr) {
+        console.log("Header load status:", status);
+        if (status === "error") {
+          console.error("Header load failed:", xhr.status, xhr.statusText);
+          return;
+        }
+
+        console.log("Header loaded successfully");
+
         const current = "about.html";
         $('.nav-link').each(function(){
           const linkPage = ($(this).attr('href')||'').split('/').pop();
           if (linkPage === current) $(this).addClass('active');
         });
-        // Initialize header functionality
-        if (typeof initializeHeader === 'function') {
-          initializeHeader();
-        }
+
+        // Wait for script to be parsed
+        setTimeout(function() {
+          if (typeof initializeHeader === 'function') {
+            console.log("Calling initializeHeader...");
+            initializeHeader();
+          } else {
+            console.error("initializeHeader function not found!");
+          }
+        }, 200);
       });
       $("#footer").load("components/footer.html", function(){
         const year = new Date().getFullYear();
@@ -457,3 +471,4 @@
     });
   </script>
 </body>
+</html>

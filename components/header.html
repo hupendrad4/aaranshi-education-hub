@@ -129,6 +129,8 @@
 <!-- WORKING JAVASCRIPT (NO DUPLICATES) -->
 <script>
     function initializeHeader() {
+        console.log('=== initializeHeader called ===');
+
         const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
         document.querySelectorAll('.navbar .nav-link, .mobile-sidebar .nav-link').forEach(link => {
@@ -141,7 +143,20 @@
         const backdrop  = document.getElementById('sidebarBackdrop');
         const closeBtn  = document.getElementById('sidebarClose');
 
+        console.log('Elements found:', {
+            toggleBtn: !!toggleBtn,
+            sidebar: !!sidebar,
+            backdrop: !!backdrop,
+            closeBtn: !!closeBtn
+        });
+
+        if (!toggleBtn || !sidebar || !backdrop || !closeBtn) {
+            console.error('Missing required elements for hamburger menu');
+            return;
+        }
+
         function openSidebar() {
+            console.log('Opening sidebar');
             sidebar.classList.add('show');
             backdrop.classList.add('show');
             toggleBtn.setAttribute('aria-expanded', 'true');
@@ -150,6 +165,7 @@
         }
 
         function closeSidebar() {
+            console.log('Closing sidebar');
             sidebar.classList.remove('show');
             backdrop.classList.remove('show');
             toggleBtn.setAttribute('aria-expanded', 'false');
@@ -159,6 +175,7 @@
 
         toggleBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            console.log('Hamburger clicked!');
             sidebar.classList.contains('show') ? closeSidebar() : openSidebar();
         });
 
@@ -172,6 +189,8 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && sidebar.classList.contains('show')) closeSidebar();
         });
+
+        console.log('=== Header initialized successfully ===');
     }
 
     if (document.readyState === 'loading') {
