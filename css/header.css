@@ -19,14 +19,14 @@ body.no-scroll {
   font-size: 0.85rem;
   color: var(--edu-ink);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
 }
 
 .topbar a {
   color: var(--edu-ink);
   text-decoration: none;
   transition: var(--transition);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   white-space: nowrap;
 }
 
@@ -37,23 +37,21 @@ body.no-scroll {
 .topbar .kicker {
   color: var(--edu-navy);
   font-weight: 600;
-  font-size: 0.7rem;
-  display: inline-flex;
-  align-items: center;
+  font-size: 0.8rem;
   white-space: nowrap;
 }
 
 .topbar .kicker i {
-  margin-right: 0.25rem;
   color: var(--edu-green);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 
 .topbar .fas {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  color: var(--edu-navy);
 }
 
-/* Ensure all items stay on one line */
+/* Ensure items don't wrap */
 .topbar span {
   white-space: nowrap;
 }
@@ -61,26 +59,26 @@ body.no-scroll {
 /* Tablet adjustments */
 @media (max-width: 991.98px) {
   .topbar {
-    padding: 0.25rem 0;
+    padding: 0.3rem 0;
   }
 
   .topbar .kicker {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
 
   .topbar a {
     font-size: 0.7rem;
   }
 
-  .topbar .fas {
+  .topbar .fas,
+  .topbar .kicker i {
     font-size: 0.65rem;
   }
 }
 
-/* Mobile adjustments - COMPACT for one line */
-@media (max-width: 500.98px) {
+/* Mobile adjustments - compact to fit all 3 items */
+@media (max-width: 767.98px) {
   .topbar {
-    font-size: 0.65rem;
     padding: 0.25rem 0;
   }
 
@@ -92,23 +90,47 @@ body.no-scroll {
     font-size: 0.6rem;
   }
 
-  .topbar .fas {
-    font-size: 0.55rem;
-  }
-
+  .topbar .fas,
   .topbar .kicker i {
-    margin-right: 0.15rem;
+    font-size: 0.55rem;
   }
 }
 
-/* Extra small screens - EXTRA COMPACT */
+/* Extra small screens - very compact */
 @media (max-width: 576px) {
   .topbar {
-    font-size: 0.6rem;
-    padding: 0.2rem 0;
+    padding: 0.25rem 0;
   }
 
   .topbar .kicker {
+    font-size: 0.55rem;
+  }
+
+  .topbar a {
+    font-size: 0.55rem;
+  }
+
+  .topbar .fas,
+  .topbar .kicker i {
+    font-size: 0.5rem;
+  }
+}
+
+/* Very small screens - ultra compact */
+@media (max-width: 400px) {
+  .topbar .kicker {
+    font-size: 0.5rem;
+  }
+
+  .topbar a {
+    font-size: 0.5rem;
+  }
+
+  .topbar .fas,
+  .topbar .kicker i {
+    font-size: 0.45rem;
+  }
+}
     font-size: 0.55rem;
   }
 
